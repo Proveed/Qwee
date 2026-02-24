@@ -4,144 +4,95 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PROVEED</title>
-
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Segoe UI', sans-serif;
-    }
-
-    body {
-      background: #0f0f0f;
-      color: white;
-    }
-
-    .navbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 20px 40px;
-      background: #111;
-      border-bottom: 1px solid #222;
-    }
-
-    .logo {
-      font-weight: bold;
-      font-size: 18px;
-      color: #B4F000;
-    }
-
-    nav a {
-      color: #aaa;
-      text-decoration: none;
-      margin-left: 20px;
-      transition: 0.3s;
-    }
-
-    nav a:hover {
-      color: #B4F000;
-    }
-
-    .hero {
-      height: 85vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 20px;
-    }
-
-    .hero-content {
-      max-width: 600px;
-    }
-
-    .hero h1 {
-      font-size: 42px;
-      margin-bottom: 20px;
-      color: #B4F000;
-    }
-
-    .hero p {
-      color: #aaa;
-      margin-bottom: 30px;
-      line-height: 1.6;
-    }
-
-    .buttons {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-    }
-
-    button {
-      padding: 12px 25px;
-      border-radius: 8px;
-      border: none;
-      cursor: pointer;
-      font-size: 16px;
-      transition: 0.3s;
-    }
-
-    .primary {
-      background: #B4F000;
-      color: black;
-      font-weight: bold;
-    }
-
-    .primary:hover {
-      background: #d4ff4f;
-    }
-
-    .secondary {
-      background: transparent;
-      border: 1px solid #B4F000;
-      color: white;
-    }
-
-    .secondary:hover {
-      background: #222;
-    }
-
-    .footer {
-      text-align: center;
-      padding: 20px;
-      background: #0a0a0a;
-      font-size: 14px;
-      color: #666;
-    }
-  </style>
-
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <header class="navbar">
-    <div class="logo">PROVEED</div>
-    <nav>
-      <a href="#">Inicio</a>
-      <a href="#">Cómo funciona</a>
-      <a href="#">Acceder</a>
-    </nav>
-  </header>
+<header class="navbar">
+  <div class="logo">PROVEED</div>
+  <nav>
+    <a href="#como">Cómo funciona</a>
+    <a href="#seguridad">Seguridad</a>
+    <a href="#empezar">Empezar</a>
+  </nav>
+</header>
 
-  <section class="hero">
-    <div class="hero-content">
-      <h1>El marketplace mayorista del futuro</h1>
-      <p>
-        Conecta proveedores reales con emprendedores inteligentes.
-        Compra al por mayor. Vende con margen. Escala sin límites.
-      </p>
-      <div class="buttons">
-        <button class="primary">Comenzar ahora</button>
-        <button class="secondary">Soy proveedor</button>
-      </div>
+<section class="hero">
+  <div class="hero-text">
+    <h1>Compra seguro. Vende con margen. Escala sin miedo.</h1>
+    <p>
+      PROVEED conecta emprendedores con proveedores verificados.
+      Todo en un solo lugar. Sin estafas. Sin pérdidas.
+    </p>
+    <div class="buttons">
+      <button class="btn-primary">Quiero empezar</button>
+      <button class="btn-secondary">Soy proveedor</button>
     </div>
-  </section>
+  </div>
 
-  <footer class="footer">
-    © 2025 PROVEED — Todos los derechos reservados
-  </footer>
+  <div class="hero-image">
+    <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d" alt="Emprendedores trabajando">
+  </div>
+</section>
 
+<section class="problem">
+  <h2>¿Cansado de buscar proveedores en internet?</h2>
+  <p>
+    WhatsApp, Facebook, páginas dudosas… sin garantías.
+    Sin protección.
+    Sin saber si te van a estafar.
+  </p>
+</section>
+
+<section class="solution" id="como">
+  <h2>PROVEED lo reúne todo en un solo lugar</h2>
+  <div class="cards">
+    <div class="card">
+      <img src="https://cdn-icons-png.flaticon.com/512/190/190411.png">
+      <h3>Proveedores verificados</h3>
+      <p>Documentos revisados antes de publicar productos.</p>
+    </div>
+
+    <div class="card">
+      <img src="https://cdn-icons-png.flaticon.com/512/833/833314.png">
+      <h3>Pagos protegidos</h3>
+      <p>El dinero se retiene hasta confirmar la entrega.</p>
+    </div>
+
+    <div class="card">
+      <img src="https://cdn-icons-png.flaticon.com/512/929/929426.png">
+      <h3>Reputación real</h3>
+      <p>Sistema de calificaciones para evitar fraudes.</p>
+    </div>
+  </div>
+</section>
+
+<section class="antifraud" id="seguridad">
+  <div class="antifraud-text">
+    <h2>Sistema Antifraude Inteligente</h2>
+    <ul>
+      <li>✔ Validación de identidad</li>
+      <li>✔ Comprobante obligatorio de envío</li>
+      <li>✔ Dinero retenido hasta confirmación</li>
+      <li>✔ Historial de comportamiento</li>
+      <li>✔ Bloqueo automático de cuentas sospechosas</li>
+    </ul>
+  </div>
+
+  <div class="antifraud-image">
+    <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d" alt="Seguridad digital">
+  </div>
+</section>
+
+<section class="cta" id="empezar">
+  <h2>Todo lo que necesitas para vender… en un solo lugar.</h2>
+  <button class="btn-primary large">Crear cuenta ahora</button>
+</section>
+
+<footer class="footer">
+  © 2025 PROVEED — Marketplace Mayorista Seguro
+</footer>
+
+<script src="app.js"></script>
 </body>
 </html>
