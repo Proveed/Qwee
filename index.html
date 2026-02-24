@@ -4,14 +4,120 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PROVEED</title>
-<link rel="stylesheet" href="style.css"></head>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      background: #0f0f0f;
+      color: white;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+      background: #111;
+      border-bottom: 1px solid #222;
+    }
+
+    .logo {
+      font-weight: bold;
+      font-size: 18px;
+      color: #B4F000;
+    }
+
+    nav a {
+      color: #aaa;
+      text-decoration: none;
+      margin-left: 20px;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: #B4F000;
+    }
+
+    .hero {
+      height: 85vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .hero-content {
+      max-width: 600px;
+    }
+
+    .hero h1 {
+      font-size: 42px;
+      margin-bottom: 20px;
+      color: #B4F000;
+    }
+
+    .hero p {
+      color: #aaa;
+      margin-bottom: 30px;
+      line-height: 1.6;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    button {
+      padding: 12px 25px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+      transition: 0.3s;
+    }
+
+    .primary {
+      background: #B4F000;
+      color: black;
+      font-weight: bold;
+    }
+
+    .primary:hover {
+      background: #d4ff4f;
+    }
+
+    .secondary {
+      background: transparent;
+      border: 1px solid #B4F000;
+      color: white;
+    }
+
+    .secondary:hover {
+      background: #222;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 20px;
+      background: #0a0a0a;
+      font-size: 14px;
+      color: #666;
+    }
+  </style>
+
+</head>
 <body>
 
   <header class="navbar">
-    <div class="logo">
-      <img src="assets/logo.svg" alt="PROVEED">
-      <span>PROVEED</span>
-    </div>
+    <div class="logo">PROVEED</div>
     <nav>
       <a href="#">Inicio</a>
       <a href="#">Cómo funciona</a>
@@ -26,25 +132,10 @@
         Conecta proveedores reales con emprendedores inteligentes.
         Compra al por mayor. Vende con margen. Escala sin límites.
       </p>
-      <div class="hero-buttons">
+      <div class="buttons">
         <button class="primary">Comenzar ahora</button>
         <button class="secondary">Soy proveedor</button>
       </div>
-    </div>
-  </section>
-
-  <section class="features">
-    <div class="feature">
-      <h3>🔒 Seguridad</h3>
-      <p>Pagos protegidos y sistema antifraude inteligente.</p>
-    </div>
-    <div class="feature">
-      <h3>📦 Mayoristas reales</h3>
-      <p>Accede a inventario directo de proveedores verificados.</p>
-    </div>
-    <div class="feature">
-      <h3>📊 Escala tu negocio</h3>
-      <p>Herramientas para crecer como emprendedor profesional.</p>
     </div>
   </section>
 
