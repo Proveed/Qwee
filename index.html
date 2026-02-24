@@ -1,72 +1,213 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PROVEED</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>PROVEED | B2B Future Platform</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;700;900&family=Orbitron:wght@400;900&display=swap" rel="stylesheet">
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+    <style>
+        :root {
+            --primary: #9ACD32; /* Verde Lima */
+            --secondary: #FF8C00; /* Naranja */
+            --dark: #0a0f1a;
+            --glass: rgba(255, 255, 255, 0.05);
+            --border: rgba(255, 255, 255, 0.1);
+        }
 
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--dark);
+            color: #fff;
+            font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden;
+            height: 100vh;
+        }
+
+        /* FONDO FUTURISTA ANIMADO */
+        .bg-canvas {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at 50% 50%, #1a2a4a 0%, #0a0f1a 100%);
+            z-index: -1;
+        }
+
+        .glow {
+            position: absolute;
+            width: 300px; height: 300px;
+            background: var(--primary);
+            filter: blur(150px);
+            opacity: 0.15;
+            border-radius: 50%;
+            animation: move 10s infinite alternate;
+        }
+
+        @keyframes move {
+            from { transform: translate(-10%, -10%); }
+            to { transform: translate(50%, 50%); }
+        }
+
+        /* LANDING PAGE CONTENT */
+        .landing {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            padding: 20px;
+            text-align: center;
+        }
+
+        /* EL LOGO HEXAGONAL PERFECTO */
+        .logo-container {
+            position: relative;
+            width: 120px; height: 135px;
+            margin-bottom: 30px;
+        }
+
+        .hexagon-bg {
+            background: var(--primary);
+            width: 100%; height: 100%;
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 50px rgba(154, 205, 50, 0.4);
+        }
+
+        .check-svg {
+            width: 50px;
+            stroke-dasharray: 100;
+            animation: drawCheck 1.5s ease-out forwards;
+        }
+
+        @keyframes drawCheck {
+            from { stroke-dashoffset: 100; }
+            to { stroke-dashoffset: 0; }
+        }
+
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3rem;
+            letter-spacing: 12px;
+            font-weight: 900;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            background: linear-gradient(to bottom, #fff, #999);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        p.slogan {
+            font-size: 0.9rem;
+            letter-spacing: 4px;
+            color: var(--primary);
+            margin-bottom: 50px;
+            font-weight: 700;
+        }
+
+        /* BOTONES PREMIUM */
+        .btn-group {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            width: 100%;
+            max-width: 320px;
+        }
+
+        .btn-main {
+            position: relative;
+            padding: 20px;
+            border-radius: 50px;
+            border: none;
+            background: var(--primary);
+            color: var(--dark);
+            font-weight: 900;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 14px;
+            cursor: pointer;
+            overflow: hidden;
+            transition: 0.3s;
+            text-transform: uppercase;
+        }
+
+        .btn-main::after {
+            content: '';
+            position: absolute;
+            top: -50%; left: -50%;
+            width: 200%; height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.4), transparent);
+            transform: rotate(45deg);
+            transition: 0.5s;
+        }
+
+        .btn-main:hover::after { left: 120%; }
+        .btn-main:hover { transform: scale(1.05); box-shadow: 0 0 30px var(--primary); }
+
+        .btn-outline {
+            padding: 18px;
+            border-radius: 50px;
+            border: 1px solid var(--border);
+            background: var(--glass);
+            color: #fff;
+            backdrop-filter: blur(10px);
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn-outline:hover { background: #fff; color: var(--dark); }
+
+        /* VISTA DE LA APP (OCULTA INICIALMENTE) */
+        #main-app { display: none; padding: 40px; }
+    </style>
 </head>
 <body>
 
-<header class="navbar">
-  <div class="logo">PROVEED</div>
-  <nav>
-    <a href="#seguridad">Seguridad</a>
-    <a href="#como">Cómo funciona</a>
-    <a href="#empezar">Empezar</a>
-  </nav>
-</header>
+    <div class="bg-canvas">
+        <div class="glow"></div>
+    </div>
 
-<section class="hero">
-  <h1>El marketplace mayorista seguro de Ecuador</h1>
-  <p>
-    Compra directamente a proveedores verificados.
-    Vende con margen. Escala con confianza.
-  </p>
-  <div class="buttons">
-    <button class="btn-primary">Crear cuenta</button>
-    <button class="btn-outline">Soy proveedor</button>
-  </div>
-</section>
+    <section class="landing" id="landing-page">
+        <div class="logo-container">
+            <div class="hexagon-bg">
+                <svg class="check-svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+            </div>
+        </div>
+        
+        <h1>PROVEED</h1>
+        <p class="slogan">FUTURE B2B MARKETPLACE</p>
 
-<section class="trust">
-  <div class="trust-box">
-    <h2>Sin estafas. Sin riesgos. Sin improvisación.</h2>
-    <p>
-      PROVEED protege tu dinero hasta que confirmes la entrega.
-      Cada proveedor pasa por validación de identidad.
-    </p>
-  </div>
-</section>
+        <div class="btn-group">
+            <button class="btn-main" onclick="goToApp()">EMPEZAR AHORA</button>
+            <button class="btn-outline" onclick="goToLogin()">Ya tengo una cuenta</button>
+        </div>
+    </section>
 
-<section class="features" id="seguridad">
-  <div class="feature">
-    <h3>Dinero retenido</h3>
-    <p>El pago se libera solo cuando confirmas recepción.</p>
-  </div>
+    <main id="main-app">
+        </main>
 
-  <div class="feature">
-    <h3>Identidad verificada</h3>
-    <p>Documentos reales antes de permitir vender.</p>
-  </div>
+    <script>
+        function goToApp() {
+            // Animación de salida de la landing
+            document.getElementById('landing-page').style.transition = '0.8s';
+            document.getElementById('landing-page').style.transform = 'translateY(-100%)';
+            document.getElementById('landing-page').style.opacity = '0';
+            
+            setTimeout(() => {
+                document.getElementById('landing-page').style.display = 'none';
+                alert("Redirigiendo a Creación de Cuenta con perfil B2B...");
+                // Aquí llamaremos a la función de navegación de la app que ya tenemos
+            }, 800);
+        }
 
-  <div class="feature">
-    <h3>Reputación pública</h3>
-    <p>Historial visible para evitar fraudes.</p>
-  </div>
-</section>
-
-<section class="cta" id="empezar">
-  <h2>Todo lo que buscabas… en un solo lugar.</h2>
-  <button class="btn-primary large">Empezar ahora</button>
-</section>
-
-<footer>
-  © 2025 PROVEED
-</footer>
-
+        function goToLogin() {
+             alert("Redirigiendo a Inicio de Sesión...");
+        }
+    </script>
 </body>
 </html>
