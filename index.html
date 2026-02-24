@@ -3,156 +3,139 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>PROVEED | La Revolución B2B en Ecuador</title>
+    <title>PROVEED | Elite B2B Ecuador</title>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;600;900&family=Syncopate:wght@700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #9ACD32; /* Verde Lima Elite */
+            --primary: #9ACD32; 
             --dark: #05070a;
-            --accent: #FF8C00; /* Naranja Negocios */
+            --accent: #FF8C00;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background-color: var(--dark); color: #fff; font-family: 'Outfit', sans-serif; overflow-x: hidden; }
+        body { background-color: var(--dark); color: #fff; font-family: 'Outfit', sans-serif; }
 
-        /* HERO SECTION CON IMAGEN DE FONDO IMPACTANTE */
+        /* HERO CON IMAGEN CORREGIDA Y FILTRO PROFESIONAL */
         .hero {
             position: relative;
             min-height: 100vh;
             display: flex; flex-direction: column; align-items: center; justify-content: center;
-            padding: 40px 25px;
-            background: linear-gradient(rgba(5, 7, 10, 0.8), rgba(5, 7, 10, 0.8)), 
-                        url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=2070&auto=format&fit=crop'); /* Imagen de almacén inteligente */
+            padding: 40px 20px;
+            /* Imagen de un puerto logístico moderno (Ecuador es potencia logística) */
+            background: linear-gradient(rgba(5, 7, 10, 0.85), rgba(5, 7, 10, 0.85)), 
+                        url('https://images.unsplash.com/photo-1521791136064-7986c2923216?auto=format&fit=crop&q=80&w=1000');
             background-size: cover;
             background-position: center;
             text-align: center;
         }
 
-        /* LOGO HEXAGONAL PRECISIÓN */
+        .ecuador-badge {
+            background: rgba(154, 205, 50, 0.15);
+            padding: 10px 25px; border-radius: 50px;
+            font-size: 0.75rem; letter-spacing: 3px;
+            border: 1px solid var(--primary);
+            margin-bottom: 20px;
+            color: var(--primary);
+            font-weight: 600;
+        }
+
         .brand-hex {
-            width: 80px; height: 90px;
+            width: 70px; height: 80px;
             background: var(--primary);
             clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
             display: flex; align-items: center; justify-content: center;
-            box-shadow: 0 0 30px rgba(154, 205, 50, 0.5);
             margin-bottom: 20px;
-            animation: float 3s infinite ease-in-out;
+            box-shadow: 0 0 40px rgba(154, 205, 50, 0.4);
         }
-
-        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
 
         .title-main {
             font-family: 'Syncopate', sans-serif;
-            font-size: 2.2rem; letter-spacing: 8px;
-            margin-bottom: 10px; text-shadow: 0 5px 15px rgba(0,0,0,0.5);
+            font-size: 2.5rem; letter-spacing: 12px;
+            margin-bottom: 15px;
         }
 
         .highlight { color: var(--primary); }
 
-        /* SECCIÓN POR QUÉ ECUADOR */
-        .ecuador-tag {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 8px 20px; border-radius: 50px;
-            font-size: 0.8rem; letter-spacing: 2px;
-            border: 1px solid var(--primary);
-            margin-bottom: 25px; backdrop-filter: blur(5px);
+        .motive {
+            max-width: 450px; font-size: 1.1rem; color: #e2e8f0;
+            line-height: 1.6; margin-bottom: 40px; font-weight: 300;
         }
 
-        .motive-box {
-            max-width: 500px; margin-bottom: 40px;
+        /* CARDS CON IMÁGENES QUE SÍ CARGAN */
+        .card-container {
+            width: 100%; max-width: 400px; margin-bottom: 40px;
         }
 
-        .motive-box h2 { font-size: 1.5rem; margin-bottom: 15px; font-weight: 900; }
-        .motive-box p { font-size: 1rem; color: #ddd; line-height: 1.6; }
-
-        /* GRID DE BENEFICIOS CON IMÁGENES */
-        .benefits-grid {
-            display: grid; grid-template-columns: 1fr; gap: 20px;
-            width: 100%; max-width: 500px; margin-bottom: 50px;
-        }
-
-        .benefit-card {
-            background: rgba(255,255,255,0.05);
-            border-radius: 25px; padding: 20px;
+        .info-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px; padding: 15px;
             display: flex; align-items: center; gap: 15px;
-            border: 1px solid rgba(255,255,255,0.1);
-            text-align: left;
+            margin-bottom: 15px; backdrop-filter: blur(10px);
         }
 
-        .img-icon {
-            width: 60px; height: 60px; border-radius: 15px; object-fit: cover;
-            border: 2px solid var(--primary);
-        }
-
-        /* SISTEMA ANTIFRAUDE PREMIUM */
-        .shield-section {
-            background: linear-gradient(45deg, rgba(154, 205, 50, 0.1), rgba(0,0,0,0.5));
-            border-radius: 30px; padding: 30px;
+        .card-img {
+            width: 65px; height: 65px; border-radius: 12px;
+            background-size: cover; background-position: center;
             border: 1px solid var(--primary);
-            width: 100%; max-width: 500px; margin-bottom: 40px;
         }
 
-        /* BOTONES */
+        /* BOTONES ELITE */
         .btn-elite {
-            width: 100%; max-width: 350px;
-            padding: 22px; border-radius: 50px; border: none;
+            width: 100%; max-width: 320px;
+            padding: 20px; border-radius: 50px; border: none;
             font-family: 'Syncopate', sans-serif; font-size: 0.8rem;
             font-weight: 700; cursor: pointer; transition: 0.4s;
             text-transform: uppercase; letter-spacing: 2px;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
         }
 
         .btn-primary { background: var(--primary); color: #000; box-shadow: 0 10px 30px rgba(154, 205, 50, 0.3); }
-        .btn-ghost { background: transparent; border: 1px solid #fff; color: #fff; }
+        .btn-outline { background: transparent; border: 1px solid #fff; color: #fff; }
 
     </style>
 </head>
 <body>
 
     <section class="hero">
-        <div class="ecuador-tag">🇪🇨 PRIMERA PLATAFORMA B2B DE ECUADOR</div>
+        <div class="ecuador-badge">REVOLUCIÓN EMPRESARIAL ECUADOR</div>
         
         <div class="brand-hex">
-            <svg width="35" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="4">
+            <svg width="30" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="4">
                 <polyline points="20 6 9 17 4 12"></polyline>
             </svg>
         </div>
 
         <h1 class="title-main">PRO<span class="highlight">VEED</span></h1>
         
-        <div class="motive-box">
-            <h2>Hacemos lo que nadie se atrevió en Ecuador.</h2>
-            <p>Conectamos emprendedores con importadores directos eliminando intermediarios que devoran tu ganancia. En Proveed, el éxito no es una opción, es el estándar.</p>
-        </div>
+        <p class="motive">
+            La primera red blindada que conecta emprendedores con el stock real de los importadores más grandes del país.
+        </p>
 
-        <div class="benefits-grid">
-            <div class="benefit-card">
-                <img src="https://images.unsplash.com/photo-1556742563-c62512619b02?q=80&w=100" class="img-icon" alt="Seguridad">
-                <div>
-                    <strong>Cero Estafas</strong>
-                    <p style="font-size: 0.8rem; color: #aaa;">Proveedores verificados bajo registro fiscal ecuatoriano.</p>
+        <div class="card-container">
+            <div class="info-card">
+                <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=200&q=80')"></div>
+                <div style="text-align: left;">
+                    <strong style="color: var(--primary);">Seguridad Total</strong>
+                    <p style="font-size: 0.8rem; color: #aaa;">Proveedores validados por el SRI y nuestro equipo.</p>
                 </div>
             </div>
-            <div class="benefit-card">
-                <img src="https://images.unsplash.com/photo-1566576721346-d4a3b4eaad5b?q=80&w=100" class="img-icon" alt="Logística">
-                <div>
-                    <strong>Logística Blindada</strong>
-                    <p style="font-size: 0.8rem; color: #aaa;">Rastreo real de tus lotes desde Guayaquil o Quito.</p>
+
+            <div class="info-card">
+                <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=200&q=80')"></div>
+                <div style="text-align: left;">
+                    <strong style="color: var(--primary);">Escalabilidad</strong>
+                    <p style="font-size: 0.8rem; color: #aaa;">Importa y distribuye sin intermediarios.</p>
                 </div>
             </div>
         </div>
 
-        <div class="shield-section">
-            <h3 style="color: var(--primary); margin-bottom: 10px;">🛡️ Sistema Escudo PRO</h3>
-            <p style="font-size: 0.9rem; line-height: 1.5;">
-                Somos los únicos con <b>Protección de Fondos</b>. Tu dinero se queda en nuestra caja fuerte digital y solo se entrega al proveedor cuando tú confirmas que el producto es lo que pediste.
-            </p>
+        <button class="btn-elite btn-primary" onclick="alert('Accediendo al sistema empresarial...')">EMPEZAR AHORA</button>
+        <button class="btn-elite btn-outline" onclick="alert('Iniciando sesión...')">YA TENGO CUENTA</button>
+
+        <div style="margin-top: 30px; font-size: 0.65rem; color: #444; letter-spacing: 5px;">
+            QUITO • GUAYAQUIL • CUENCA
         </div>
-
-        <button class="btn-elite btn-primary" onclick="alert('Iniciando Registro Business Ecuador...')">Empezar a Ganar</button>
-        <button class="btn-elite btn-ghost" onclick="alert('Accediendo al Panel...')">Ya soy Miembro</button>
-
-        <p style="margin-top: 30px; font-size: 0.7rem; color: #666; letter-spacing: 2px;">QUITO - GUAYAQUIL - CUENCA - MANTA</p>
     </section>
 
 </body>
