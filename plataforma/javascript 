@@ -1,0 +1,13 @@
+const firebaseConfig = {
+  apiKey: "AIzaSyAZQRlfdtJjmodrfmct5N3qrLO6hniO2o8",
+  authDomain: "proveed-8cb7c.firebaseapp.com",
+  projectId: "proveed-8cb7c",
+  storageBucket: "proveed-8cb7c.firebasestorage.app",
+  messagingSenderId: "235073250367",
+  appId: "1:235073250367:web:89ec59fea5f0b8a347448a"
+};
+
+firebase.initializeApp(firebaseConfig);
+
+const auth = firebase.auth();
+const db = firebase.firestore();
