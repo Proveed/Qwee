@@ -3,172 +3,157 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>PROVEED | El Futuro del B2B</title>
+    <title>PROVEED | La Revolución B2B en Ecuador</title>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;600;900&family=Syncopate:wght@700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #9ACD32; /* Verde Lima Pro */
+            --primary: #9ACD32; /* Verde Lima Elite */
             --dark: #05070a;
-            --card: rgba(255, 255, 255, 0.03);
-            --border: rgba(154, 205, 50, 0.2);
+            --accent: #FF8C00; /* Naranja Negocios */
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { 
-            background-color: var(--dark); 
-            color: #fff; 
-            font-family: 'Outfit', sans-serif; 
-            overflow-x: hidden; 
-        }
+        body { background-color: var(--dark); color: #fff; font-family: 'Outfit', sans-serif; overflow-x: hidden; }
 
-        /* FONDO ANIMADO DE PARTÍCULAS */
-        .bg-view {
-            position: fixed; inset: 0; z-index: -1;
-            background: radial-gradient(circle at 20% 30%, #1a2e0a 0%, #05070a 100%);
-        }
-
+        /* HERO SECTION CON IMAGEN DE FONDO IMPACTANTE */
         .hero {
+            position: relative;
             min-height: 100vh;
-            display: flex; flex-direction: column; align-items: center;
-            padding: 60px 25px; text-align: center;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            padding: 40px 25px;
+            background: linear-gradient(rgba(5, 7, 10, 0.8), rgba(5, 7, 10, 0.8)), 
+                        url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=2070&auto=format&fit=crop'); /* Imagen de almacén inteligente */
+            background-size: cover;
+            background-position: center;
+            text-align: center;
         }
 
-        /* LOGO HEXAGONAL PRECISIÓN QUIRÚRGICA */
+        /* LOGO HEXAGONAL PRECISIÓN */
         .brand-hex {
-            width: 100px; height: 110px;
+            width: 80px; height: 90px;
             background: var(--primary);
             clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
             display: flex; align-items: center; justify-content: center;
-            box-shadow: 0 0 40px rgba(154, 205, 50, 0.4);
-            margin-bottom: 25px;
+            box-shadow: 0 0 30px rgba(154, 205, 50, 0.5);
+            margin-bottom: 20px;
+            animation: float 3s infinite ease-in-out;
         }
+
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
 
         .title-main {
             font-family: 'Syncopate', sans-serif;
-            font-size: 2.5rem; letter-spacing: 10px;
-            margin-bottom: 10px; color: #fff;
+            font-size: 2.2rem; letter-spacing: 8px;
+            margin-bottom: 10px; text-shadow: 0 5px 15px rgba(0,0,0,0.5);
         }
 
         .highlight { color: var(--primary); }
 
-        .slogan-pro {
-            font-size: 1.1rem; color: #888; letter-spacing: 3px;
-            margin-bottom: 40px; text-transform: uppercase;
+        /* SECCIÓN POR QUÉ ECUADOR */
+        .ecuador-tag {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 8px 20px; border-radius: 50px;
+            font-size: 0.8rem; letter-spacing: 2px;
+            border: 1px solid var(--primary);
+            margin-bottom: 25px; backdrop-filter: blur(5px);
         }
 
-        /* SECCIÓN DE MÉTRICAS (PRO MAX) */
-        .stats-grid {
-            display: grid; grid-template-columns: 1fr 1fr; gap: 15px;
+        .motive-box {
+            max-width: 500px; margin-bottom: 40px;
+        }
+
+        .motive-box h2 { font-size: 1.5rem; margin-bottom: 15px; font-weight: 900; }
+        .motive-box p { font-size: 1rem; color: #ddd; line-height: 1.6; }
+
+        /* GRID DE BENEFICIOS CON IMÁGENES */
+        .benefits-grid {
+            display: grid; grid-template-columns: 1fr; gap: 20px;
+            width: 100%; max-width: 500px; margin-bottom: 50px;
+        }
+
+        .benefit-card {
+            background: rgba(255,255,255,0.05);
+            border-radius: 25px; padding: 20px;
+            display: flex; align-items: center; gap: 15px;
+            border: 1px solid rgba(255,255,255,0.1);
+            text-align: left;
+        }
+
+        .img-icon {
+            width: 60px; height: 60px; border-radius: 15px; object-fit: cover;
+            border: 2px solid var(--primary);
+        }
+
+        /* SISTEMA ANTIFRAUDE PREMIUM */
+        .shield-section {
+            background: linear-gradient(45deg, rgba(154, 205, 50, 0.1), rgba(0,0,0,0.5));
+            border-radius: 30px; padding: 30px;
+            border: 1px solid var(--primary);
             width: 100%; max-width: 500px; margin-bottom: 40px;
         }
 
-        .stat-card {
-            background: var(--card); border: 1px solid var(--border);
-            padding: 20px; border-radius: 20px; backdrop-filter: blur(10px);
-        }
-
-        .stat-num { font-size: 1.8rem; font-weight: 900; color: var(--primary); display: block; }
-        .stat-desc { font-size: 0.7rem; color: #aaa; text-transform: uppercase; letter-spacing: 1px; }
-
-        /* SISTEMA ANTIFRAUDE BLOCKCHAIN-STYLE */
-        .fraud-shield {
-            background: rgba(154, 205, 50, 0.05);
-            border: 1px solid var(--primary);
-            padding: 25px; border-radius: 25px;
-            margin-bottom: 50px; width: 100%; max-width: 500px;
-            position: relative; overflow: hidden;
-        }
-
-        .shield-icon { font-size: 2rem; margin-bottom: 10px; display: block; }
-
-        /* BOTONES DE ACCIÓN */
-        .cta-container {
-            display: flex; flex-direction: column; gap: 15px; width: 100%; max-width: 350px;
-        }
-
+        /* BOTONES */
         .btn-elite {
+            width: 100%; max-width: 350px;
             padding: 22px; border-radius: 50px; border: none;
             font-family: 'Syncopate', sans-serif; font-size: 0.8rem;
             font-weight: 700; cursor: pointer; transition: 0.4s;
             text-transform: uppercase; letter-spacing: 2px;
+            margin-bottom: 15px;
         }
 
-        .btn-primary { 
-            background: var(--primary); color: #000;
-            box-shadow: 0 10px 30px rgba(154, 205, 50, 0.3);
-        }
-
-        .btn-primary:hover { transform: translateY(-5px); box-shadow: 0 15px 40px rgba(154, 205, 50, 0.5); }
-
-        .btn-ghost {
-            background: transparent; border: 1px solid rgba(255,255,255,0.2);
-            color: #fff; backdrop-filter: blur(5px);
-        }
-
-        .btn-ghost:hover { background: rgba(255,255,255,0.05); border-color: #fff; }
-
-        .copy-text { margin-top: 40px; color: #555; font-size: 0.8rem; }
+        .btn-primary { background: var(--primary); color: #000; box-shadow: 0 10px 30px rgba(154, 205, 50, 0.3); }
+        .btn-ghost { background: transparent; border: 1px solid #fff; color: #fff; }
 
     </style>
 </head>
 <body>
 
-    <div class="bg-view"></div>
-
     <section class="hero">
+        <div class="ecuador-tag">🇪🇨 PRIMERA PLATAFORMA B2B DE ECUADOR</div>
+        
         <div class="brand-hex">
-            <svg width="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="4">
+            <svg width="35" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="4">
                 <polyline points="20 6 9 17 4 12"></polyline>
             </svg>
         </div>
 
         <h1 class="title-main">PRO<span class="highlight">VEED</span></h1>
-        <p class="slogan-pro">Inteligencia en Abastecimiento</p>
+        
+        <div class="motive-box">
+            <h2>Hacemos lo que nadie se atrevió en Ecuador.</h2>
+            <p>Conectamos emprendedores con importadores directos eliminando intermediarios que devoran tu ganancia. En Proveed, el éxito no es una opción, es el estándar.</p>
+        </div>
 
-        <p style="color: #ccc; margin-bottom: 30px; line-height: 1.6; max-width: 400px;">
-            Deja de perder tiempo en grupos de Facebook y redes sociales. Accede a la red blindada donde los grandes negocios suceden.
-        </p>
-
-        <div class="stats-grid">
-            <div class="stat-card">
-                <span class="stat-num">+12.4K</span>
-                <span class="stat-desc">Emprendedores Exitosos</span>
+        <div class="benefits-grid">
+            <div class="benefit-card">
+                <img src="https://images.unsplash.com/photo-1556742563-c62512619b02?q=80&w=100" class="img-icon" alt="Seguridad">
+                <div>
+                    <strong>Cero Estafas</strong>
+                    <p style="font-size: 0.8rem; color: #aaa;">Proveedores verificados bajo registro fiscal ecuatoriano.</p>
+                </div>
             </div>
-            <div class="stat-card">
-                <span class="stat-num">850</span>
-                <span class="stat-desc">Negocios Hoy Buscando Lotes</span>
+            <div class="benefit-card">
+                <img src="https://images.unsplash.com/photo-1566576721346-d4a3b4eaad5b?q=80&w=100" class="img-icon" alt="Logística">
+                <div>
+                    <strong>Logística Blindada</strong>
+                    <p style="font-size: 0.8rem; color: #aaa;">Rastreo real de tus lotes desde Guayaquil o Quito.</p>
+                </div>
             </div>
         </div>
 
-        <div class="fraud-shield">
-            <span class="shield-icon">🛡️</span>
-            <h4 style="color: var(--primary); margin-bottom: 10px; font-size: 1.1rem;">Protocolo Anti-Fraude PROVEED</h4>
-            <p style="font-size: 0.85rem; color: #bbb;">
-                Cada proveedor pasa por una verificación biométrica y fiscal. Los pagos se liberan solo cuando confirmas la recepción del lote. <b>Seguridad 100% garantizada.</b>
+        <div class="shield-section">
+            <h3 style="color: var(--primary); margin-bottom: 10px;">🛡️ Sistema Escudo PRO</h3>
+            <p style="font-size: 0.9rem; line-height: 1.5;">
+                Somos los únicos con <b>Protección de Fondos</b>. Tu dinero se queda en nuestra caja fuerte digital y solo se entrega al proveedor cuando tú confirmas que el producto es lo que pediste.
             </p>
         </div>
 
-        <div class="cta-container">
-            <button class="btn-elite btn-primary" onclick="startApp()">Crear mi Cuenta Business</button>
-            <button class="btn-elite btn-ghost" onclick="loginApp()">Entrar a mi Panel</button>
-        </div>
+        <button class="btn-elite btn-primary" onclick="alert('Iniciando Registro Business Ecuador...')">Empezar a Ganar</button>
+        <button class="btn-elite btn-ghost" onclick="alert('Accediendo al Panel...')">Ya soy Miembro</button>
 
-        <p class="copy-text">© 2026 PROVEED TECHNOLOGIES. ALL RIGHTS RESERVED.</p>
+        <p style="margin-top: 30px; font-size: 0.7rem; color: #666; letter-spacing: 2px;">QUITO - GUAYAQUIL - CUENCA - MANTA</p>
     </section>
 
-    <script>
-        function startApp() {
-            document.body.style.opacity = '0';
-            document.body.style.transition = '0.5s';
-            setTimeout(() => {
-                alert("Bienvenido al siguiente nivel. Iniciando registro de seguridad...");
-                // Aquí se cargará tu sistema de Registro que ya tenemos listo
-            }, 500);
-        }
-
-        function loginApp() {
-            alert("Accediendo al terminal seguro de Proveed...");
-        }
-    </script>
 </body>
 </html>
