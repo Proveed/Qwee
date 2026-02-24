@@ -3,210 +3,171 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>PROVEED | B2B Future Platform</title>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;700;900&family=Orbitron:wght@400;900&display=swap" rel="stylesheet">
-
+    <title>PROVEED | El Futuro del B2B</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;600;900&family=Syncopate:wght@700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #9ACD32; /* Verde Lima */
-            --secondary: #FF8C00; /* Naranja */
-            --dark: #0a0f1a;
-            --glass: rgba(255, 255, 255, 0.05);
-            --border: rgba(255, 255, 255, 0.1);
+            --primary: #9ACD32; /* Verde Lima Pro */
+            --dark: #05070a;
+            --card: rgba(255, 255, 255, 0.03);
+            --border: rgba(154, 205, 50, 0.2);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-
-        body {
-            background-color: var(--dark);
-            color: #fff;
-            font-family: 'Montserrat', sans-serif;
-            overflow-x: hidden;
-            height: 100vh;
+        body { 
+            background-color: var(--dark); 
+            color: #fff; 
+            font-family: 'Outfit', sans-serif; 
+            overflow-x: hidden; 
         }
 
-        /* FONDO FUTURISTA ANIMADO */
-        .bg-canvas {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(circle at 50% 50%, #1a2a4a 0%, #0a0f1a 100%);
-            z-index: -1;
+        /* FONDO ANIMADO DE PARTÍCULAS */
+        .bg-view {
+            position: fixed; inset: 0; z-index: -1;
+            background: radial-gradient(circle at 20% 30%, #1a2e0a 0%, #05070a 100%);
         }
 
-        .glow {
-            position: absolute;
-            width: 300px; height: 300px;
+        .hero {
+            min-height: 100vh;
+            display: flex; flex-direction: column; align-items: center;
+            padding: 60px 25px; text-align: center;
+        }
+
+        /* LOGO HEXAGONAL PRECISIÓN QUIRÚRGICA */
+        .brand-hex {
+            width: 100px; height: 110px;
             background: var(--primary);
-            filter: blur(150px);
-            opacity: 0.15;
-            border-radius: 50%;
-            animation: move 10s infinite alternate;
-        }
-
-        @keyframes move {
-            from { transform: translate(-10%, -10%); }
-            to { transform: translate(50%, 50%); }
-        }
-
-        /* LANDING PAGE CONTENT */
-        .landing {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            padding: 20px;
-            text-align: center;
-        }
-
-        /* EL LOGO HEXAGONAL PERFECTO */
-        .logo-container {
-            position: relative;
-            width: 120px; height: 135px;
-            margin-bottom: 30px;
-        }
-
-        .hexagon-bg {
-            background: var(--primary);
-            width: 100%; height: 100%;
             clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 0 50px rgba(154, 205, 50, 0.4);
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 0 40px rgba(154, 205, 50, 0.4);
+            margin-bottom: 25px;
         }
 
-        .check-svg {
-            width: 50px;
-            stroke-dasharray: 100;
-            animation: drawCheck 1.5s ease-out forwards;
+        .title-main {
+            font-family: 'Syncopate', sans-serif;
+            font-size: 2.5rem; letter-spacing: 10px;
+            margin-bottom: 10px; color: #fff;
         }
 
-        @keyframes drawCheck {
-            from { stroke-dashoffset: 100; }
-            to { stroke-dashoffset: 0; }
+        .highlight { color: var(--primary); }
+
+        .slogan-pro {
+            font-size: 1.1rem; color: #888; letter-spacing: 3px;
+            margin-bottom: 40px; text-transform: uppercase;
         }
 
-        h1 {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 3rem;
-            letter-spacing: 12px;
-            font-weight: 900;
-            margin-bottom: 10px;
-            text-transform: uppercase;
-            background: linear-gradient(to bottom, #fff, #999);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        /* SECCIÓN DE MÉTRICAS (PRO MAX) */
+        .stats-grid {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 15px;
+            width: 100%; max-width: 500px; margin-bottom: 40px;
         }
 
-        p.slogan {
-            font-size: 0.9rem;
-            letter-spacing: 4px;
-            color: var(--primary);
-            margin-bottom: 50px;
-            font-weight: 700;
+        .stat-card {
+            background: var(--card); border: 1px solid var(--border);
+            padding: 20px; border-radius: 20px; backdrop-filter: blur(10px);
         }
 
-        /* BOTONES PREMIUM */
-        .btn-group {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-            width: 100%;
-            max-width: 320px;
+        .stat-num { font-size: 1.8rem; font-weight: 900; color: var(--primary); display: block; }
+        .stat-desc { font-size: 0.7rem; color: #aaa; text-transform: uppercase; letter-spacing: 1px; }
+
+        /* SISTEMA ANTIFRAUDE BLOCKCHAIN-STYLE */
+        .fraud-shield {
+            background: rgba(154, 205, 50, 0.05);
+            border: 1px solid var(--primary);
+            padding: 25px; border-radius: 25px;
+            margin-bottom: 50px; width: 100%; max-width: 500px;
+            position: relative; overflow: hidden;
         }
 
-        .btn-main {
-            position: relative;
-            padding: 20px;
-            border-radius: 50px;
-            border: none;
-            background: var(--primary);
-            color: var(--dark);
-            font-weight: 900;
-            font-family: 'Orbitron', sans-serif;
-            font-size: 14px;
-            cursor: pointer;
-            overflow: hidden;
-            transition: 0.3s;
-            text-transform: uppercase;
+        .shield-icon { font-size: 2rem; margin-bottom: 10px; display: block; }
+
+        /* BOTONES DE ACCIÓN */
+        .cta-container {
+            display: flex; flex-direction: column; gap: 15px; width: 100%; max-width: 350px;
         }
 
-        .btn-main::after {
-            content: '';
-            position: absolute;
-            top: -50%; left: -50%;
-            width: 200%; height: 200%;
-            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.4), transparent);
-            transform: rotate(45deg);
-            transition: 0.5s;
+        .btn-elite {
+            padding: 22px; border-radius: 50px; border: none;
+            font-family: 'Syncopate', sans-serif; font-size: 0.8rem;
+            font-weight: 700; cursor: pointer; transition: 0.4s;
+            text-transform: uppercase; letter-spacing: 2px;
         }
 
-        .btn-main:hover::after { left: 120%; }
-        .btn-main:hover { transform: scale(1.05); box-shadow: 0 0 30px var(--primary); }
-
-        .btn-outline {
-            padding: 18px;
-            border-radius: 50px;
-            border: 1px solid var(--border);
-            background: var(--glass);
-            color: #fff;
-            backdrop-filter: blur(10px);
-            font-weight: 700;
-            cursor: pointer;
-            transition: 0.3s;
+        .btn-primary { 
+            background: var(--primary); color: #000;
+            box-shadow: 0 10px 30px rgba(154, 205, 50, 0.3);
         }
 
-        .btn-outline:hover { background: #fff; color: var(--dark); }
+        .btn-primary:hover { transform: translateY(-5px); box-shadow: 0 15px 40px rgba(154, 205, 50, 0.5); }
 
-        /* VISTA DE LA APP (OCULTA INICIALMENTE) */
-        #main-app { display: none; padding: 40px; }
+        .btn-ghost {
+            background: transparent; border: 1px solid rgba(255,255,255,0.2);
+            color: #fff; backdrop-filter: blur(5px);
+        }
+
+        .btn-ghost:hover { background: rgba(255,255,255,0.05); border-color: #fff; }
+
+        .copy-text { margin-top: 40px; color: #555; font-size: 0.8rem; }
+
     </style>
 </head>
 <body>
 
-    <div class="bg-canvas">
-        <div class="glow"></div>
-    </div>
+    <div class="bg-view"></div>
 
-    <section class="landing" id="landing-page">
-        <div class="logo-container">
-            <div class="hexagon-bg">
-                <svg class="check-svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
-                    <polyline points="20 6 9 17 4 12"></polyline>
-                </svg>
+    <section class="hero">
+        <div class="brand-hex">
+            <svg width="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="4">
+                <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+        </div>
+
+        <h1 class="title-main">PRO<span class="highlight">VEED</span></h1>
+        <p class="slogan-pro">Inteligencia en Abastecimiento</p>
+
+        <p style="color: #ccc; margin-bottom: 30px; line-height: 1.6; max-width: 400px;">
+            Deja de perder tiempo en grupos de Facebook y redes sociales. Accede a la red blindada donde los grandes negocios suceden.
+        </p>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <span class="stat-num">+12.4K</span>
+                <span class="stat-desc">Emprendedores Exitosos</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-num">850</span>
+                <span class="stat-desc">Negocios Hoy Buscando Lotes</span>
             </div>
         </div>
-        
-        <h1>PROVEED</h1>
-        <p class="slogan">FUTURE B2B MARKETPLACE</p>
 
-        <div class="btn-group">
-            <button class="btn-main" onclick="goToApp()">EMPEZAR AHORA</button>
-            <button class="btn-outline" onclick="goToLogin()">Ya tengo una cuenta</button>
+        <div class="fraud-shield">
+            <span class="shield-icon">🛡️</span>
+            <h4 style="color: var(--primary); margin-bottom: 10px; font-size: 1.1rem;">Protocolo Anti-Fraude PROVEED</h4>
+            <p style="font-size: 0.85rem; color: #bbb;">
+                Cada proveedor pasa por una verificación biométrica y fiscal. Los pagos se liberan solo cuando confirmas la recepción del lote. <b>Seguridad 100% garantizada.</b>
+            </p>
         </div>
+
+        <div class="cta-container">
+            <button class="btn-elite btn-primary" onclick="startApp()">Crear mi Cuenta Business</button>
+            <button class="btn-elite btn-ghost" onclick="loginApp()">Entrar a mi Panel</button>
+        </div>
+
+        <p class="copy-text">© 2026 PROVEED TECHNOLOGIES. ALL RIGHTS RESERVED.</p>
     </section>
 
-    <main id="main-app">
-        </main>
-
     <script>
-        function goToApp() {
-            // Animación de salida de la landing
-            document.getElementById('landing-page').style.transition = '0.8s';
-            document.getElementById('landing-page').style.transform = 'translateY(-100%)';
-            document.getElementById('landing-page').style.opacity = '0';
-            
+        function startApp() {
+            document.body.style.opacity = '0';
+            document.body.style.transition = '0.5s';
             setTimeout(() => {
-                document.getElementById('landing-page').style.display = 'none';
-                alert("Redirigiendo a Creación de Cuenta con perfil B2B...");
-                // Aquí llamaremos a la función de navegación de la app que ya tenemos
-            }, 800);
+                alert("Bienvenido al siguiente nivel. Iniciando registro de seguridad...");
+                // Aquí se cargará tu sistema de Registro que ya tenemos listo
+            }, 500);
         }
 
-        function goToLogin() {
-             alert("Redirigiendo a Inicio de Sesión...");
+        function loginApp() {
+            alert("Accediendo al terminal seguro de Proveed...");
         }
     </script>
 </body>
