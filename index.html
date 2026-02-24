@@ -39,12 +39,13 @@
         }
         .trust-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
         .trust-card h3 { font-family: 'Syncopate'; color: var(--primary); font-size: 2rem; }
-        .trust-card p { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 2px; color: #888; }
+        .trust-card p { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; color: #888; }
 
         /* EL PROBLEMA QUE SOLUCIONAMOS */
         .explainer { width: 100%; margin-bottom: 60px; }
-        .explainer h2 { font-family: 'Syncopate'; font-size: 1.4rem; color: var(--primary); margin-bottom: 20px; text-align: center; }
+        .explainer h2 { font-family: 'Syncopate'; font-size: 1.2rem; color: var(--primary); margin-bottom: 25px; text-align: center; letter-spacing: 3px; }
         .problem-box { background: rgba(255,255,255,0.02); padding: 30px; border-radius: 20px; border-left: 5px solid #ff4d4d; margin-bottom: 20px; }
+        .solution-box { background: rgba(154, 205, 50, 0.02); padding: 30px; border-radius: 20px; border-left: 5px solid var(--primary); }
 
         /* PROVEED SEG: LA FACULTAD DEL EMPRENDEDOR */
         .seg-box {
@@ -55,7 +56,7 @@
             padding: 50px;
             position: relative;
         }
-        .seg-title { font-family: 'Syncopate'; font-size: 1.8rem; margin-bottom: 30px; text-align: center; }
+        .seg-title { font-family: 'Syncopate'; font-size: 1.6rem; margin-bottom: 30px; text-align: center; letter-spacing: 5px; }
         
         .feature-item { 
             background: rgba(255,255,255,0.03); 
@@ -78,12 +79,14 @@
             font-size: 0.8rem;
         }
 
+        /* BOTÓN FINAL SOLICITADO */
         .btn-main {
-            background: var(--primary); color: #000; padding: 20px 50px;
+            background: var(--primary); color: #000; padding: 25px 60px;
             border-radius: 50px; font-weight: 900; font-family: 'Syncopate';
-            border: none; cursor: pointer; margin-top: 40px; transition: 0.3s;
+            border: none; cursor: pointer; margin: 60px 0; transition: 0.4s;
+            text-transform: uppercase; letter-spacing: 2px; font-size: 0.9rem;
         }
-        .btn-main:hover { transform: scale(1.05); box-shadow: 0 0 30px var(--primary); }
+        .btn-main:hover { transform: scale(1.05); box-shadow: 0 0 40px var(--primary); }
     </style>
 </head>
 <body>
@@ -94,30 +97,30 @@
         </header>
 
         <section class="trust-section">
-            <h2 style="font-family: 'Syncopate'; font-size: 1rem; margin-bottom: 30px; letter-spacing: 5px;">POR QUÉ CONFIAR EN NOSOTROS</h2>
+            <h2 style="font-family: 'Syncopate'; font-size: 0.9rem; margin-bottom: 30px; letter-spacing: 5px; color: #fff;">RESPALDADOS POR RESULTADOS</h2>
             <div class="trust-grid">
                 <div class="trust-card">
                     <h3>+1,200</h3>
-                    <p>Emprendedores Protegidos</p>
+                    <p>Emprendedores</p>
                 </div>
                 <div class="trust-card">
                     <h3>100%</h3>
-                    <p>Capital Garantizado</p>
+                    <p>Seguridad Real</p>
                 </div>
                 <div class="trust-card">
                     <h3>$0</h3>
-                    <p>Pérdidas por Estafa</p>
+                    <p>Dinero Perdido</p>
                 </div>
             </div>
         </section>
 
         <section class="explainer">
-            <h2>DETENEMOS EL ABUSO</h2>
+            <h2>DETENEMOS EL RIESGO</h2>
             <div class="problem-box">
-                <p><b>El problema en Ecuador:</b> Envías el dinero por una oferta en redes, el vendedor no envía nada y pierdes tu inversión. No hay garantías, solo promesas vacías.</p>
+                <p><b>El Problema:</b> Muchos emprendedores en Ecuador envían dinero a desconocidos y nunca reciben su mercancía. El fraude digital destruye sueños y capitales todos los días.</p>
             </div>
-            <div class="problem-box" style="border-left-color: var(--primary);">
-                <p><b>La solución PROVEED:</b> Eliminamos el riesgo. El vendedor sabe que el dinero está, pero no puede tocarlo hasta que cumpla su parte.</p>
+            <div class="solution-box">
+                <p><b>Nuestra Solución:</b> PROVEED actúa como el árbitro de tu negocio. El capital se queda en pausa hasta que el vendedor demuestra que cumplió con el envío.</p>
             </div>
         </section>
 
@@ -125,28 +128,28 @@
             <div class="seg-title">SISTEMA PROVEED <span style="color:var(--primary)">SEG</span></div>
             
             <div class="feature-item">
-                <b>1. PROTECCIÓN DE CAPITAL</b>
-                <p>Tu dinero entra a una cuenta blindada. El vendedor recibe la notificación de pago, pero el capital queda "congelado" a tu favor.</p>
+                <b>1. PROTECCIÓN BANCARIA</b>
+                <p>Tu dinero entra al sistema y queda blindado. El vendedor recibe la confirmación, pero el capital permanece bajo el resguardo de PROVEED SEG.</p>
             </div>
 
             <div class="feature-item">
                 <b>2. ENVÍO DEL COMPROBANTE</b>
-                <p>El importador debe realizar el despacho y cargar el comprobante real de guía o envío al sistema para que tú lo revises.</p>
+                <p>El importador despacha el lote y tiene la obligación de subir el comprobante de guía al sistema para tu revisión inmediata.</p>
             </div>
 
             <div class="feature-item">
-                <b>3. TU DERECHO DE LIBERACIÓN</b>
-                <p>Aquí está la clave: <b>Tú, como emprendedor, tienes la facultad única de liberar el dinero.</b> Si el comprobante es correcto y estás satisfecho, autorizas el pago. Si no, el dinero no se mueve.</p>
+                <b>3. TU FACULTAD DE LIBERAR</b>
+                <p>Tú, como emprendedor, tienes el derecho absoluto: solo cuando verificas el comprobante y estás conforme, autorizas la liberación del pago. <b>Nadie mueve el dinero sin tu consentimiento.</b></p>
             </div>
 
             <div class="highlight-right">
-                EL EMPRENDEDOR TIENE EL CONTROL TOTAL DEL PAGO
+                FACULTAD TOTAL PARA EL EMPRENDEDOR
             </div>
         </section>
 
-        <button class="btn-main">REGISTRARME COMO EMPRENDEDOR</button>
+        <button class="btn-main">crear una cuenta en proveed</button>
         
-        <p style="margin: 50px 0; color: #333; letter-spacing: 10px;">PROVEED ECUADOR 2026</p>
+        <p style="margin-bottom: 50px; color: #222; letter-spacing: 10px; font-size: 0.7rem;">PROVEED ECUADOR 2026</p>
     </div>
 
 </body>
