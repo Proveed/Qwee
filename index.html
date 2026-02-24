@@ -3,15 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PROVEED | Control Total</title>
+    <title>PROVEED | Ecuador Elite</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;600;900&family=Syncopate:wght@700&display=swap" rel="stylesheet">
     
     <style>
         :root { 
-            --primary: #9ACD32; 
-            --dark: #020408;
-            --max-w: 900px; /* Reducido para mayor elegancia y centrado */
+            --primary: #9ACD32; /* Verde Lima */
+            --dark: #050505;
+            --glass: rgba(255, 255, 255, 0.03);
+            --border: rgba(154, 205, 50, 0.2);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -21,193 +22,239 @@
             font-family: 'Outfit', sans-serif; 
             display: flex;
             flex-direction: column;
-            align-items: center; /* Centrado horizontal global */
+            align-items: center;
             overflow-x: hidden;
         }
 
-        /* CONTENEDOR MAESTRO QUE CENTRA TODO */
-        .main-wrapper {
-            width: 100%;
-            max-width: var(--max-w);
-            padding: 0 20px;
+        /* LOGO Y CABECERA PREMIUM */
+        .brand-header {
+            padding: 80px 0 40px 0;
             display: flex;
             flex-direction: column;
-            align-items: center; /* Asegura que cada bloque hijo esté centrado */
+            align-items: center;
+            width: 100%;
         }
 
-        /* HERO - CENTRADO TOTAL */
-        .hero {
-            width: 100vw;
-            height: 70vh;
-            background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)), 
-                        url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=1600');
-            background-size: cover; background-position: center;
-            display: flex; flex-direction: column; align-items: center; justify-content: center;
-            text-align: center; border-bottom: 2px solid var(--primary);
-            margin-bottom: 60px;
-        }
-
-        .hex-logo {
-            width: 70px; height: 80px; background: var(--primary);
+        .hex-container {
+            width: 80px; height: 90px;
+            background: var(--primary);
             clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
             display: flex; align-items: center; justify-content: center;
-            box-shadow: 0 0 30px rgba(154, 205, 50, 0.5); margin-bottom: 25px;
+            box-shadow: 0 0 60px rgba(154, 205, 50, 0.3);
+            margin-bottom: 20px;
         }
 
-        .hero h1 { font-family: 'Syncopate', sans-serif; font-size: 3rem; letter-spacing: 15px; margin-bottom: 10px; text-indent: 15px; }
-        .hero p { font-size: 0.9rem; color: var(--primary); font-weight: 600; letter-spacing: 5px; text-transform: uppercase; }
+        .main-logo-text {
+            font-family: 'Syncopate', sans-serif;
+            font-size: 3.5rem;
+            letter-spacing: 18px;
+            text-indent: 18px;
+            font-weight: 700;
+            color: #fff;
+            text-align: center;
+        }
 
-        /* SECCIÓN CONFIANZA - SIMÉTRICA */
-        .trust-container {
-            width: 100%;
-            background: rgba(255,255,255,0.03);
-            border: 1px solid rgba(154, 205, 50, 0.3);
-            border-radius: 20px;
-            padding: 40px;
+        .sub-logo-text {
+            color: var(--primary);
+            font-family: 'Syncopate', sans-serif;
+            font-size: 0.7rem;
+            letter-spacing: 8px;
+            margin-top: 10px;
+            opacity: 0.8;
+        }
+
+        /* CONTENEDOR PRINCIPAL */
+        .content {
+            width: 90%;
+            max-width: 1000px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-bottom: 100px;
+        }
+
+        /* SECCIÓN CONFIANZA (NÚMEROS REALES) */
+        .trust-section {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-            text-align: center;
-            margin-bottom: 80px;
+            gap: 2px;
+            background: var(--border);
+            border: 1px solid var(--border);
+            width: 100%;
+            margin: 60px 0;
+            border-radius: 15px;
+            overflow: hidden;
         }
-        .trust-item h4 { font-size: 1.8rem; color: var(--primary); font-family: 'Syncopate'; margin-bottom: 5px; }
-        .trust-item p { font-size: 0.7rem; color: #888; text-transform: uppercase; letter-spacing: 2px; }
+        .trust-item {
+            background: var(--dark);
+            padding: 40px 20px;
+            text-align: center;
+        }
+        .trust-item h3 { font-family: 'Syncopate'; color: var(--primary); font-size: 2.2rem; margin-bottom: 10px; }
+        .trust-item p { font-size: 0.7rem; letter-spacing: 3px; color: #666; text-transform: uppercase; }
 
-        /* TEXTOS Y PÁRRAFOS CENTRADOS */
-        .section-title { font-family: 'Syncopate', sans-serif; font-size: 1.5rem; text-align: center; margin-bottom: 40px; color: #fff; width: 100%; }
-        
-        .problem-solution {
+        /* EXPLICACIÓN DEL PROBLEMA Y SOLUCIÓN */
+        .narrative {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 30px;
+            gap: 40px;
             width: 100%;
             margin-bottom: 80px;
         }
-        .card {
-            background: #0a0c10;
-            padding: 35px;
-            border-radius: 20px;
-            border: 1px solid rgba(255,255,255,0.05);
-            text-align: left;
-        }
-        .card h3 { font-family: 'Syncopate'; font-size: 0.9rem; margin-bottom: 15px; color: var(--primary); }
-        .card p { font-size: 0.95rem; color: #ccc; line-height: 1.6; }
+        .narrative-box h4 { font-family: 'Syncopate'; font-size: 0.9rem; margin-bottom: 20px; letter-spacing: 3px; }
+        .narrative-box p { color: #888; line-height: 1.8; font-size: 1rem; }
+        .red { color: #ff4d4d; }
+        .green { color: var(--primary); }
 
-        /* PROVEED SEG - CAJA DE SEGURIDAD */
-        .seg-box {
+        /* PROVEED SEG: SISTEMA ANTIFRAUDE */
+        .seg-container {
             width: 100%;
-            background: linear-gradient(180deg, #0a0c10 0%, #020408 100%);
-            border: 1px solid var(--primary);
+            background: var(--glass);
+            border: 1px solid var(--border);
             border-radius: 30px;
-            padding: 50px;
-            text-align: center;
-            margin-bottom: 60px;
+            padding: 60px;
+            position: relative;
         }
+        .seg-container h2 { 
+            font-family: 'Syncopate'; 
+            font-size: 2rem; 
+            text-align: center; 
+            margin-bottom: 50px; 
+            letter-spacing: 8px; 
+        }
+
         .step {
             display: flex;
-            align-items: flex-start;
-            gap: 20px;
-            text-align: left;
-            margin-bottom: 25px;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
+            gap: 30px;
+            margin-bottom: 40px;
         }
-        .number { 
-            min-width: 30px; height: 30px; background: var(--primary); color: #000; 
-            border-radius: 50%; display: flex; align-items: center; justify-content: center; 
-            font-weight: 900; 
+        .step-icon {
+            min-width: 40px; height: 40px;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-weight: 900;
+            font-family: 'Syncopate';
         }
+        .step-content b { color: var(--primary); display: block; margin-bottom: 8px; font-size: 1.2rem; letter-spacing: 1px; }
+        .step-content p { color: #ccc; line-height: 1.6; }
 
-        /* BOTÓN FINAL - CENTRADO */
-        .btn-container { width: 100%; display: flex; justify-content: center; margin-bottom: 100px; }
-        .btn-final {
+        /* EL DERECHO DEL EMPRENDEDOR */
+        .right-box {
             background: var(--primary);
             color: #000;
-            padding: 22px 50px;
-            border-radius: 50px;
-            font-family: 'Syncopate', sans-serif;
-            font-size: 0.85rem;
-            font-weight: 700;
-            text-decoration: none;
-            text-transform: uppercase;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            font-family: 'Syncopate';
+            font-weight: 900;
+            font-size: 0.8rem;
+            margin-top: 20px;
             letter-spacing: 2px;
-            transition: 0.3s;
+        }
+
+        /* BOTÓN FINAL */
+        .btn-proveed {
+            background: var(--primary);
+            color: #000;
+            padding: 25px 70px;
+            border-radius: 100px;
+            font-family: 'Syncopate', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 4px;
             border: none;
             cursor: pointer;
+            transition: all 0.4s ease;
+            margin-top: 80px;
+            box-shadow: 0 15px 40px rgba(154, 205, 50, 0.2);
         }
-        .btn-final:hover { box-shadow: 0 0 40px rgba(154, 205, 50, 0.6); transform: translateY(-3px); }
+        .btn-proveed:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 50px rgba(154, 205, 50, 0.4);
+        }
 
         /* RESPONSIVE */
         @media (max-width: 768px) {
-            .problem-solution, .trust-container { grid-template-columns: 1fr; }
-            .hero h1 { font-size: 2rem; }
+            .trust-section, .narrative { grid-template-columns: 1fr; }
+            .main-logo-text { font-size: 2.2rem; letter-spacing: 10px; }
+            .seg-container { padding: 30px; }
         }
     </style>
 </head>
 <body>
 
-    <div class="hero">
-        <div class="hex-logo">
-            <svg width="30" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="4"><polyline points="20 6 9 17 4 12"></polyline></svg>
+    <div class="brand-header">
+        <div class="hex-container">
+            <svg width="40" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="4"><polyline points="20 6 9 17 4 12"></polyline></svg>
         </div>
-        <h1>PROVEED</h1>
-        <p>El estándar de oro para emprendedores</p>
+        <h1 class="main-logo-text">PRO<span style="color:var(--primary)">VEED</span></h1>
+        <p class="sub-logo-text">SISTEMA DE IMPORTACIÓN BLINDADA</p>
     </div>
 
-    <div class="main-wrapper">
-        
-        <div class="trust-container">
+    <div class="content">
+
+        <section class="trust-section">
             <div class="trust-item">
-                <h4>+1.2K</h4>
+                <h3>+1.2K</h3>
                 <p>Emprendedores</p>
             </div>
             <div class="trust-item">
-                <h4>$0</h4>
+                <h3>$0</h3>
                 <p>Capital Perdido</p>
             </div>
             <div class="trust-item">
-                <h4>100%</h4>
-                <p>Seguridad</p>
+                <h3>100%</h3>
+                <p>Verificado</p>
             </div>
-        </div>
+        </section>
 
-        <h2 class="section-title">DETENEMOS EL CAOS</h2>
-        <div class="problem-solution">
-            <div class="card" style="border-top: 4px solid #ff4d4d;">
-                <h3>El Problema</h3>
-                <p>En Ecuador, el emprendedor arriesga su capital en redes sociales. Las estafas son constantes y no hay respaldo cuando un vendedor desaparece con el dinero.</p>
+        <section class="narrative">
+            <div class="narrative-box">
+                <h4 class="red">EL PROBLEMA</h4>
+                <p>En Ecuador, el comercio informal está lleno de estafas. Emprendedores envían su capital a desconocidos y terminan bloqueados, sin dinero y sin mercancía. El riesgo es total.</p>
             </div>
-            <div class="card" style="border-top: 4px solid var(--primary);">
-                <h3>La Solución</h3>
-                <p>PROVEED conecta importadores reales con emprendedores, eliminando el riesgo. Centralizamos la confianza para que tu negocio crezca sobre seguro.</p>
+            <div class="narrative-box">
+                <h4 class="green">NUESTRA SOLUCIÓN</h4>
+                <p>PROVEED elimina al intermediario dudoso. Creamos un puente directo y seguro entre el importador mayorista y tu negocio, respaldado por tecnología antifraude.</p>
             </div>
-        </div>
+        </section>
 
-        <div class="seg-box">
-            <h2 class="section-title" style="margin-bottom: 50px;">SISTEMA PROVEED <span style="color:var(--primary)">SEG</span></h2>
+        <section class="seg-container">
+            <h2>PROVEED <span style="color:var(--primary)">SEG</span></h2>
             
             <div class="step">
-                <div class="number">1</div>
-                <p><b>Blindaje:</b> Tu pago entra al sistema PROVEED SEG y queda resguardado. El vendedor recibe la orden pero no el dinero.</p>
+                <div class="step-icon">1</div>
+                <div class="step-content">
+                    <b>RESGUARDO DE CAPITAL</b>
+                    <p>Al realizar una compra, tu dinero entra a la bóveda de PROVEED SEG. Está seguro y el vendedor no puede retirarlo hasta que cumpla.</p>
+                </div>
             </div>
-            <div class="step">
-                <div class="number">2</div>
-                <p><b>Evidencia:</b> El importador carga el comprobante real de envío del lote al sistema para tu revisión.</p>
-            </div>
-            <div class="step">
-                <div class="number">3</div>
-                <p><b>Tu Facultad:</b> Tú tienes el derecho único de liberar el pago. Solo si el comprobante es correcto, autorizas la transferencia al vendedor.</p>
-            </div>
-            
-            <p style="margin-top: 30px; font-weight: 900; color: var(--primary); letter-spacing: 2px; font-size: 0.8rem;">TU DINERO, BAJO TU CONTROL</p>
-        </div>
 
-        <div class="btn-container">
-            <button class="btn-final">crear una cuenta en proveed</button>
-        </div>
+            <div class="step">
+                <div class="step-icon">2</div>
+                <div class="step-content">
+                    <b>EVIDENCIA DE DESPACHO</b>
+                    <p>El importador envía el producto y carga obligatoriamente el comprobante o guía de despacho real en la plataforma.</p>
+                </div>
+            </div>
 
-        <p style="color: #222; letter-spacing: 10px; font-size: 0.7rem; margin-bottom: 50px;">PROVEED ECUADOR 2026</p>
+            <div class="step">
+                <div class="step-icon">3</div>
+                <div class="step-content">
+                    <b>FACULTAD DEL EMPRENDEDOR</b>
+                    <p>Tú tienes el control absoluto. Solo después de revisar el comprobante y confirmar que el envío es real, tú liberas el pago al vendedor.</p>
+                </div>
+            </div>
+
+            <div class="right-box">EL DERECHO DE LIBERAR EL DINERO ES ÚNICAMENTE TUYO</div>
+        </section>
+
+        <button class="btn-proveed">crear una cuenta en proveed</button>
+
+        <p style="margin-top: 80px; color: #1a1a1a; letter-spacing: 12px; font-size: 0.8rem; font-family: 'Syncopate';">PROVEED ECUADOR 2026</p>
     </div>
 
 </body>
