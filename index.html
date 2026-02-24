@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>PROVEED | El Gigante B2B de Ecuador</title>
+    <title>PROVEED | El Gigante de los Emprendedores en Ecuador</title>
     
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
@@ -106,63 +106,63 @@
             <svg width="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="4"><polyline points="20 6 9 17 4 12"></polyline></svg>
         </div>
         <h1>PROVEED</h1>
-        <p>EL ESTÁNDAR DE ORO B2B EN ECUADOR</p>
-        <a href="#explicacion" class="btn-main">ENTRAR AL SISTEMA</a>
+        <p>EL ESTÁNDAR DE ORO PARA EMPRENDEDORES EN ECUADOR</p>
+        <a href="#explicacion" class="btn-main">ENTRAR COMO EMPRENDEDOR</a>
     </header>
 
     <section class="section-full" id="explicacion">
-        <span class="tag">¿Por qué PROVEED?</span>
+        <span class="tag">¿Por qué ser un Emprendedor PROVEED?</span>
         <h2>Si no estás aquí, estás perdiendo.</h2>
         <p>En Ecuador, el 60% de los emprendedores son estafados al menos una vez en redes sociales. PROVEED elimina el riesgo y multiplica tu margen de ganancia conectándote con el origen.</p>
         
         <div class="feature-box">
             <div class="card">
                 <h3 style="color:var(--primary)">0% ESTAFAS</h3>
-                <p>Nuestra Bóveda Digital retiene el pago. El dinero solo sale cuando tú confirmas que el camión llegó a tu bodega.</p>
+                <p>Nuestra Bóveda Digital retiene el pago. El dinero solo sale cuando tú como emprendedor confirmas que el camión llegó a tu bodega.</p>
             </div>
             <div class="card">
                 <h3 style="color:var(--primary)">+45% DE MARGEN</h3>
-                <p>Al eliminar intermediarios de Facebook e Instagram, compras a precio real de importación. El ahorro es tu ganancia.</p>
+                <p>Al eliminar intermediarios, compras a precio real de importación. Ese ahorro es ganancia pura para tu emprendimiento.</p>
             </div>
         </div>
     </section>
 
     <section class="shield-section">
-        <span class="tag">Protección Bancaria</span>
+        <span class="tag">Protección al Emprendedor</span>
         <h2>Sistema de Bóveda Escrow</h2>
         <div class="boveda-visual">
             <div style="font-size: 3rem; margin-bottom: 20px;">🛡️</div>
-            <p style="color: #fff; font-size: 1.1rem; margin-bottom: 15px;"><b>Cómo funciona:</b></p>
+            <p style="color: #fff; font-size: 1.1rem; margin-bottom: 15px;"><b>Tu capital está seguro:</b></p>
             <p style="text-align: left; font-size: 0.9rem; color: #bbb;">
-                1. Pagas tu lote de productos.<br>
+                1. Pagas el lote para tu negocio.<br>
                 2. El dinero queda <b>congelado</b> en PROVEED.<br>
                 3. El proveedor envía la mercancía.<br>
                 4. Tú recibes, revisas y escaneas el QR.<br>
-                5. <b>SOLO AHÍ</b> el proveedor recibe su pago.
+                5. <b>SOLO AHÍ</b> liberas el pago al proveedor.
             </p>
         </div>
     </section>
 
     <section class="section-full">
-        <span class="tag">Logística Directa</span>
-        <h2>De la Aduana a tu negocio.</h2>
+        <span class="tag">Logística para Emprendedores</span>
+        <h2>De la Aduana a tu emprendimiento.</h2>
         <div class="truck-row">
             <img src="https://images.unsplash.com/photo-1519003722824-194d4455a60c?auto=format&fit=crop&q=80&w=800" class="truck-img" alt="Camión Logística">
             <div style="flex: 1; text-align: left;">
                 <h3>Movimiento Blindado</h3>
-                <p>No enviamos por servicios informales. PROVEED trabaja con las flotas logísticas más importantes de Quito y Guayaquil para asegurar que cada caja llegue impecable.</p>
-                <button class="btn-main" onclick="openReg()" style="padding: 15px 30px; font-size: 0.8rem;">REGISTRAR MI EMPRESA</button>
+                <p>No enviamos por servicios informales. PROVEED asegura que cada caja llegue impecable a las manos del emprendedor en Quito, Guayaquil o cualquier ciudad.</p>
+                <button class="btn-main" onclick="openReg()" style="padding: 15px 30px; font-size: 0.8rem;">REGISTRARME COMO EMPRENDEDOR</button>
             </div>
         </div>
     </section>
 
     <div id="modal-reg">
         <div class="form-box">
-            <h2 style="font-size: 1.2rem; margin-bottom: 20px;">CREAR CUENTA BUSINESS</h2>
-            <input type="text" id="r-empresa" placeholder="Nombre Comercial / RUC">
-            <input type="email" id="r-email" placeholder="Correo de Negocios">
+            <h2 style="font-size: 1.2rem; margin-bottom: 20px;">CUENTA DE EMPRENDEDOR</h2>
+            <input type="text" id="r-nombre" placeholder="Tu Nombre o Emprendimiento">
+            <input type="email" id="r-email" placeholder="Correo Electrónico">
             <input type="password" id="r-pass" placeholder="Contraseña Segura">
-            <button class="btn-main" style="width: 100%; margin-top: 10px;" onclick="handleRegistro()">ACTIVAR BLINDAJE</button>
+            <button class="btn-main" style="width: 100%; margin-top: 10px;" onclick="handleRegistro()">ACTIVAR MI BLINDAJE</button>
             <p style="margin-top: 15px; font-size: 0.8rem; color: #555; cursor: pointer;" onclick="document.getElementById('modal-reg').style.display='none'">CANCELAR</p>
         </div>
     </div>
@@ -177,18 +177,18 @@
         function openReg() { document.getElementById('modal-reg').style.display = 'flex'; }
 
         async function handleRegistro() {
-            const emp = document.getElementById('r-empresa').value;
+            const nom = document.getElementById('r-nombre').value;
             const email = document.getElementById('r-email').value;
             const pass = document.getElementById('r-pass').value;
 
-            if(!emp || !email || pass.length < 6) return alert("Por favor, llena los datos correctamente.");
+            if(!nom || !email || pass.length < 6) return alert("Por favor, llena los datos correctamente.");
 
             try {
                 const res = await auth.createUserWithEmailAndPassword(email, pass);
                 await db.collection("usuarios").doc(res.user.uid).set({
-                    empresa: emp, email: email, status: "Verificado", pais: "Ecuador"
+                    nombreEmprendedor: nom, email: email, status: "Verificado", pais: "Ecuador", tipo: "Emprendedor"
                 });
-                alert("¡Felicidades " + emp + "! Tu acceso a PROVEED está activo. Bienvenido a la revolución B2B.");
+                alert("¡Bienvenido Emprendedor " + nom + "! Tu acceso a PROVEED está activo. Es hora de ganar.");
                 location.reload();
             } catch(e) { alert("Error: " + e.message); }
         }
