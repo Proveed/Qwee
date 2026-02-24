@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>PROVEED - Plataforma</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Firebase CDN -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- SPLASH -->
+<div id="splash">
+  <div class="logoBox">
+    <div class="energyRing"></div>
+    <h1 class="logo">PROVEED</h1>
+  </div>
+</div>
+
+<!-- LOGIN / REGISTER -->
+<div id="authContainer" class="hidden">
+  <div class="card">
+
+    <h2>Acceso Plataforma</h2>
+
+    <div id="loginBox">
+      <input type="email" id="loginEmail" placeholder="Correo">
+      <input type="password" id="loginPin" placeholder="PIN">
+      <button onclick="login()">Iniciar sesión</button>
+      <p onclick="showRegister()">Crear cuenta</p>
+    </div>
+
+    <div id="roleSelect" class="hidden">
+      <h3>Selecciona tu perfil</h3>
+      <button class="greenBtn" onclick="selectRole('emprendedor')">Emprendedor</button>
+      <button class="orangeBtn" onclick="selectRole('proveedor')">Proveedor</button>
+    </div>
+
+    <div id="registerBox" class="hidden">
+      <input type="text" id="name" placeholder="Nombres">
+      <input type="email" id="email" placeholder="Correo">
+      <input type="password" id="pin" placeholder="PIN (mínimo 6 dígitos)">
+      <button onclick="register()">Crear cuenta</button>
+    </div>
+
+  </div>
+</div>
+
+<script src="firebase-config.js"></script>
+<script src="app.js"></script>
+
+</body>
+</html>
