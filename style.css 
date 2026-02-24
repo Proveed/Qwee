@@ -1,0 +1,134 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+  background: #0f0f0f;
+  color: white;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  background: #111;
+  border-bottom: 1px solid #222;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.logo img {
+  width: 35px;
+}
+
+nav a {
+  color: #aaa;
+  text-decoration: none;
+  margin-left: 20px;
+  transition: 0.3s;
+}
+
+nav a:hover {
+  color: #B4F000;
+}
+
+.hero {
+  height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+}
+
+.hero-content {
+  max-width: 600px;
+}
+
+.hero h1 {
+  font-size: 40px;
+  margin-bottom: 20px;
+  color: #B4F000;
+}
+
+.hero p {
+  color: #aaa;
+  margin-bottom: 30px;
+  line-height: 1.6;
+}
+
+.hero-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+button {
+  padding: 12px 25px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  transition: 0.3s;
+}
+
+.primary {
+  background: #B4F000;
+  color: black;
+  font-weight: bold;
+}
+
+.primary:hover {
+  background: #d4ff4f;
+}
+
+.secondary {
+  background: transparent;
+  border: 1px solid #B4F000;
+  color: white;
+}
+
+.secondary:hover {
+  background: #222;
+}
+
+.features {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  padding: 60px 20px;
+  background: #111;
+}
+
+.feature {
+  max-width: 250px;
+  text-align: center;
+}
+
+.feature h3 {
+  margin-bottom: 10px;
+  color: #B4F000;
+}
+
+.feature p {
+  color: #aaa;
+  font-size: 14px;
+}
+
+.footer {
+  text-align: center;
+  padding: 20px;
+  background: #0a0a0a;
+  font-size: 14px;
+  color: #666;
+}
