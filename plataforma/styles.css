@@ -1,0 +1,94 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #ffffff;
+}
+
+/* SPLASH */
+#splash {
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  background: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: fadeOut 3s forwards 2.5s;
+  z-index: 9999;
+}
+
+.logoBox {
+  position: relative;
+  text-align: center;
+}
+
+.logo {
+  font-size: 42px;
+  color: #A4FF00;
+  font-weight: bold;
+  animation: zoomIn 2s ease-in-out;
+}
+
+.energyRing {
+  position: absolute;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(164,255,0,0.5) 0%, transparent 70%);
+  animation: pulse 2s infinite;
+}
+
+@keyframes zoomIn {
+  0% { transform: scale(0.4); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes pulse {
+  0% { transform: scale(0.8); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(0.8); }
+}
+
+@keyframes fadeOut {
+  to { opacity: 0; visibility: hidden; }
+}
+
+.hidden { display: none; }
+
+.card {
+  max-width: 400px;
+  margin: 120px auto;
+  padding: 30px;
+  background: #F5F5F5;
+  border-radius: 12px;
+  text-align: center;
+}
+
+input {
+  width: 100%;
+  margin: 10px 0;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.greenBtn { background: #A4FF00; }
+.orangeBtn { background: #FF6A00; color: white; }
+
+/* TEMAS DASHBOARD */
+.theme-entrepreneur {
+  background-color: #EFFFF5;
+}
+
+.theme-provider {
+  background-color: #FFF3E8;
+}
