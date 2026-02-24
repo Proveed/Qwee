@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>PROVEED | El Gigante de los Emprendedores en Ecuador</title>
+    <title>PROVEED | El Estándar del Emprendedor</title>
     
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
@@ -15,182 +15,177 @@
         :root { 
             --primary: #9ACD32; 
             --dark: #020408;
-            --accent: #FF8C00;
             --card: rgba(255, 255, 255, 0.03);
+            --content-width: 1100px;
+            --inner-width: 500px;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
         body { background-color: var(--dark); color: #fff; font-family: 'Outfit', sans-serif; line-height: 1.6; }
 
-        /* HEADER IMPACTO */
+        /* CONTENEDOR MAESTRO DE PROPORCIÓN */
+        .wrapper { max-width: var(--content-width); margin: 0 auto; padding: 0 25px; }
+
+        /* HERO - PROPORCIÓN VERTICAL */
         .hero {
-            height: 100vh;
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+            height: 90vh;
+            background: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)), 
                         url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=1600');
             background-size: cover; background-position: center;
             display: flex; flex-direction: column; align-items: center; justify-content: center;
-            text-align: center; padding: 20px;
+            text-align: center; border-bottom: 2px solid var(--primary);
         }
 
         .hex-logo {
-            width: 80px; height: 90px; background: var(--primary);
+            width: 70px; height: 80px; background: var(--primary);
             clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
             display: flex; align-items: center; justify-content: center;
-            box-shadow: 0 0 30px var(--primary); margin-bottom: 20px;
+            box-shadow: 0 0 30px var(--primary); margin-bottom: 25px;
         }
 
-        .hero h1 { font-family: 'Syncopate', sans-serif; font-size: 3rem; letter-spacing: 10px; margin-bottom: 10px; }
-        .hero p { font-size: 1.2rem; color: var(--primary); font-weight: 600; letter-spacing: 3px; }
+        .hero h1 { font-family: 'Syncopate', sans-serif; font-size: 2.8rem; letter-spacing: 12px; margin-bottom: 15px; }
+        .hero p { max-width: var(--inner-width); font-size: 1rem; color: var(--primary); font-weight: 600; letter-spacing: 4px; text-transform: uppercase; }
 
-        /* SECCIÓN POR QUÉ PROVEED? */
-        .section-full { padding: 80px 20px; max-width: 1000px; margin: auto; }
-        .tag { color: var(--primary); font-weight: 900; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px; }
-        h2 { font-family: 'Syncopate', sans-serif; font-size: 2rem; margin: 15px 0; }
+        /* SECCIONES AJUSTADAS */
+        section { padding: 100px 0; display: flex; flex-direction: column; align-items: center; }
+        
+        .tag { color: var(--primary); font-weight: 900; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 3px; margin-bottom: 15px; }
+        h2 { font-family: 'Syncopate', sans-serif; font-size: 1.8rem; margin-bottom: 25px; max-width: 700px; text-align: center; }
+        .desc-text { color: #888; max-width: var(--inner-width); text-align: center; margin-bottom: 50px; }
 
-        .feature-box {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-top: 40px;
+        /* CUADROS PROPORCIONALES */
+        .feature-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; width: 100%;
         }
 
         .card {
-            background: var(--card); border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 25px; padding: 30px; transition: 0.3s;
+            background: var(--card); border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 20px; padding: 40px; transition: 0.3s;
+            display: flex; flex-direction: column; align-items: center; text-align: center;
         }
 
-        .card:hover { border-color: var(--primary); transform: translateY(-5px); }
-
-        /* SISTEMA ANTIFRAUDE EXPLICADO */
-        .shield-section {
-            background: #0a0c10; padding: 80px 20px; text-align: center;
-            border-top: 1px solid var(--primary); border-bottom: 1px solid var(--primary);
+        /* BÓVEDA ESCROW - PROPORCIÓN CENTRAL */
+        .shield-box {
+            background: #0a0c10; padding: 50px; border-radius: 30px; 
+            border: 1px solid var(--primary); max-width: 600px; width: 100%;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
         }
 
-        .boveda-visual {
-            margin: 40px auto; width: 100%; max-width: 500px;
-            background: linear-gradient(45deg, #111, #222);
-            padding: 40px; border-radius: 30px; border-left: 5px solid var(--primary);
+        /* LOGÍSTICA - FOTO PROPORCIONAL */
+        .logistics-flex {
+            display: flex; align-items: center; gap: 50px; flex-wrap: wrap; justify-content: center;
         }
 
-        /* LOGÍSTICA */
-        .truck-row {
-            display: flex; align-items: center; gap: 30px; flex-wrap: wrap; margin-top: 50px;
+        .truck-photo {
+            width: 100%; max-width: 500px; height: 350px; 
+            border-radius: 20px; object-fit: cover;
+            border: 1px solid rgba(255,255,255,0.1);
         }
 
-        .truck-img {
-            flex: 1; min-width: 300px; border-radius: 20px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
-        }
+        .logistics-info { max-width: 450px; }
 
-        /* BOTONES */
-        .btn-main {
-            background: var(--primary); color: #000; padding: 20px 50px;
+        /* BOTÓN ESTILIZADO */
+        .btn-premium {
+            background: var(--primary); color: #000; padding: 22px 45px;
             border-radius: 50px; font-weight: 900; text-transform: uppercase;
             font-family: 'Syncopate', sans-serif; border: none; cursor: pointer;
-            margin-top: 30px; transition: 0.3s; display: inline-block; text-decoration: none;
+            transition: 0.4s; letter-spacing: 2px; font-size: 0.8rem;
         }
+        .btn-premium:hover { box-shadow: 0 0 35px var(--primary); transform: translateY(-3px); }
 
-        .btn-main:hover { box-shadow: 0 0 40px var(--primary); transform: scale(1.05); }
-
-        /* MODAL REGISTRO */
-        #modal-reg {
-            display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.95);
-            z-index: 1000; align-items: center; justify-content: center; padding: 20px;
+        /* MODAL */
+        #modal-auth {
+            display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.96);
+            z-index: 2000; align-items: center; justify-content: center; padding: 25px;
         }
-        .form-box { background: #111; padding: 40px; border-radius: 30px; width: 100%; max-width: 400px; border: 1px solid var(--primary); }
-        input { width: 100%; padding: 18px; margin-bottom: 15px; border-radius: 12px; border: 1px solid #333; background: #000; color: #fff; }
+        .auth-card { background: #111; padding: 50px; border-radius: 25px; width: 100%; max-width: 400px; border: 1px solid var(--primary); }
+        input { width: 100%; padding: 20px; margin-bottom: 15px; border-radius: 12px; border: 1px solid #222; background: #000; color: #fff; font-size: 1rem; }
+
     </style>
 </head>
 <body>
 
     <header class="hero">
         <div class="hex-logo">
-            <svg width="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="4"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <svg width="35" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="4"><polyline points="20 6 9 17 4 12"></polyline></svg>
         </div>
         <h1>PROVEED</h1>
-        <p>EL ESTÁNDAR DE ORO PARA EMPRENDEDORES EN ECUADOR</p>
-        <a href="#explicacion" class="btn-main">ENTRAR COMO EMPRENDEDOR</a>
+        <p>EL ESTÁNDAR DE ORO PARA EMPRENDEDORES</p>
     </header>
 
-    <section class="section-full" id="explicacion">
-        <span class="tag">¿Por qué ser un Emprendedor PROVEED?</span>
-        <h2>Si no estás aquí, estás perdiendo.</h2>
-        <p>En Ecuador, el 60% de los emprendedores son estafados al menos una vez en redes sociales. PROVEED elimina el riesgo y multiplica tu margen de ganancia conectándote con el origen.</p>
+    <div class="wrapper">
         
-        <div class="feature-box">
-            <div class="card">
-                <h3 style="color:var(--primary)">0% ESTAFAS</h3>
-                <p>Nuestra Bóveda Digital retiene el pago. El dinero solo sale cuando tú como emprendedor confirmas que el camión llegó a tu bodega.</p>
+        <section id="inicio">
+            <span class="tag">Exclusividad</span>
+            <h2>Si no estás en Proveed, estás perdiendo.</h2>
+            <p class="desc-text">La red blindada que conecta al emprendedor ecuatoriano con el stock real de los importadores más grandes.</p>
+            
+            <div class="feature-grid">
+                <div class="card">
+                    <h3 style="color:var(--primary); margin-bottom: 15px;">0% ESTAFAS</h3>
+                    <p style="font-size: 0.9rem;">El dinero se libera solo cuando tú como emprendedor recibes y apruebas tu lote de productos.</p>
+                </div>
+                <div class="card">
+                    <h3 style="color:var(--primary); margin-bottom: 15px;">+45% MARGEN</h3>
+                    <p style="font-size: 0.9rem;">Elimina intermediarios de redes sociales y accede al precio real de importación directa.</p>
+                </div>
             </div>
-            <div class="card">
-                <h3 style="color:var(--primary)">+45% DE MARGEN</h3>
-                <p>Al eliminar intermediarios, compras a precio real de importación. Ese ahorro es ganancia pura para tu emprendimiento.</p>
+        </section>
+
+        <section>
+            <span class="tag">Seguridad Bancaria</span>
+            <div class="shield-box">
+                <div style="font-size: 3rem; text-align: center; margin-bottom: 20px;">🛡️</div>
+                <h3 style="text-align: center; margin-bottom: 25px; font-family: 'Syncopate';">Bóveda de Seguridad</h3>
+                <p style="font-size: 0.95rem; color: #ccc;">
+                    1. Pagas el lote de tu interés.<br><br>
+                    2. <b>El capital queda congelado</b> en nuestra cuenta segura.<br><br>
+                    3. El proveedor realiza el despacho.<br><br>
+                    4. <b>Tú verificas la mercancía</b> y liberas el pago mediante QR.
+                </p>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="shield-section">
-        <span class="tag">Protección al Emprendedor</span>
-        <h2>Sistema de Bóveda Escrow</h2>
-        <div class="boveda-visual">
-            <div style="font-size: 3rem; margin-bottom: 20px;">🛡️</div>
-            <p style="color: #fff; font-size: 1.1rem; margin-bottom: 15px;"><b>Tu capital está seguro:</b></p>
-            <p style="text-align: left; font-size: 0.9rem; color: #bbb;">
-                1. Pagas el lote para tu negocio.<br>
-                2. El dinero queda <b>congelado</b> en PROVEED.<br>
-                3. El proveedor envía la mercancía.<br>
-                4. Tú recibes, revisas y escaneas el QR.<br>
-                5. <b>SOLO AHÍ</b> liberas el pago al proveedor.
-            </p>
-        </div>
-    </section>
-
-    <section class="section-full">
-        <span class="tag">Logística para Emprendedores</span>
-        <h2>De la Aduana a tu emprendimiento.</h2>
-        <div class="truck-row">
-            <img src="https://images.unsplash.com/photo-1519003722824-194d4455a60c?auto=format&fit=crop&q=80&w=800" class="truck-img" alt="Camión Logística">
-            <div style="flex: 1; text-align: left;">
-                <h3>Movimiento Blindado</h3>
-                <p>No enviamos por servicios informales. PROVEED asegura que cada caja llegue impecable a las manos del emprendedor en Quito, Guayaquil o cualquier ciudad.</p>
-                <button class="btn-main" onclick="openReg()" style="padding: 15px 30px; font-size: 0.8rem;">REGISTRARME COMO EMPRENDEDOR</button>
+        <section style="border: none;">
+            <span class="tag">Logística Nacional</span>
+            <div class="logistics-flex">
+                <img src="https://images.unsplash.com/photo-1519003722824-194d4455a60c?auto=format&fit=crop&q=80&w=800" class="truck-photo" alt="Logística Proveed">
+                <div class="logistics-info">
+                    <h3 style="font-size: 1.5rem; margin-bottom: 20px;">De la Aduana a tu bodega.</h3>
+                    <p style="margin-bottom: 30px;">Proveed asegura que cada envío llegue impecable a manos del emprendedor en cualquier ciudad de Ecuador. Movimiento real para negocios reales.</p>
+                    <button class="btn-premium" onclick="document.getElementById('modal-auth').style.display='flex'">Registrarme ahora</button>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <div id="modal-reg">
-        <div class="form-box">
-            <h2 style="font-size: 1.2rem; margin-bottom: 20px;">CUENTA DE EMPRENDEDOR</h2>
-            <input type="text" id="r-nombre" placeholder="Tu Nombre o Emprendimiento">
-            <input type="email" id="r-email" placeholder="Correo Electrónico">
-            <input type="password" id="r-pass" placeholder="Contraseña Segura">
-            <button class="btn-main" style="width: 100%; margin-top: 10px;" onclick="handleRegistro()">ACTIVAR MI BLINDAJE</button>
-            <p style="margin-top: 15px; font-size: 0.8rem; color: #555; cursor: pointer;" onclick="document.getElementById('modal-reg').style.display='none'">CANCELAR</p>
+    </div>
+
+    <div id="modal-auth">
+        <div class="auth-card">
+            <h2 style="font-size: 1.2rem; margin-bottom: 25px;">REGISTRO EMPRENDEDOR</h2>
+            <input type="text" id="reg-name" placeholder="Tu Nombre o Marca">
+            <input type="email" id="reg-email" placeholder="Correo Electrónico">
+            <input type="password" id="reg-pass" placeholder="Contraseña Segura">
+            <button class="btn-premium" style="width: 100%;" onclick="registrar()">Activar Blindaje</button>
+            <p style="text-align: center; margin-top: 20px; color: #444; cursor: pointer;" onclick="document.getElementById('modal-auth').style.display='none'">Cerrar</p>
         </div>
     </div>
 
     <script>
-        // FIREBASE
         const config = { projectId: "proveed-8cb7c", authDomain: "proveed-8cb7c.firebaseapp.com" };
         firebase.initializeApp(config);
         const auth = firebase.auth();
         const db = firebase.firestore();
 
-        function openReg() { document.getElementById('modal-reg').style.display = 'flex'; }
-
-        async function handleRegistro() {
-            const nom = document.getElementById('r-nombre').value;
-            const email = document.getElementById('r-email').value;
-            const pass = document.getElementById('r-pass').value;
-
-            if(!nom || !email || pass.length < 6) return alert("Por favor, llena los datos correctamente.");
-
+        async function registrar() {
+            const n = document.getElementById('reg-name').value, e = document.getElementById('reg-email').value, p = document.getElementById('reg-pass').value;
+            if(!n || !e || p.length < 6) return alert("Completa los datos correctamente.");
             try {
-                const res = await auth.createUserWithEmailAndPassword(email, pass);
-                await db.collection("usuarios").doc(res.user.uid).set({
-                    nombreEmprendedor: nom, email: email, status: "Verificado", pais: "Ecuador", tipo: "Emprendedor"
-                });
-                alert("¡Bienvenido Emprendedor " + nom + "! Tu acceso a PROVEED está activo. Es hora de ganar.");
+                const res = await auth.createUserWithEmailAndPassword(e, p);
+                await db.collection("usuarios").doc(res.user.uid).set({ nombre: n, tipo: "Emprendedor", status: "Protegido" });
+                alert("¡Bienvenido Emprendedor " + n + "! Tu acceso está blindado.");
                 location.reload();
-            } catch(e) { alert("Error: " + e.message); }
+            } catch(error) { alert(error.message); }
         }
     </script>
 </body>
