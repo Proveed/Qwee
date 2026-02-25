@@ -1,15 +1,78 @@
-body, html { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; background-color: #000; font-family: sans-serif; }
-#intro-container { position: relative; width: 100vw; height: 100vh; display: flex; justify-content: center; align-items: center; }
-#galaxy-canvas { position: absolute; top: 0; left: 0; z-index: 1; }
-#big-bang { position: absolute; width: 4px; height: 4px; background: #fff; border-radius: 50%; z-index: 5; opacity: 0; }
-.animate-bang { animation: bangEffect 1.5s ease-out forwards; }
-@keyframes bangEffect { 0% { transform: scale(0); opacity: 1; } 40% { transform: scale(800); opacity: 1; background: #fff; } 100% { transform: scale(3500); opacity: 0; } }
-.logo-wrapper { display: flex; flex-direction: column; align-items: center; z-index: 10; }
-.css-logo { position: relative; width: 100px; height: 100px; display: flex; justify-content: center; align-items: center; border: 4px solid #007bff; border-radius: 50%; margin-bottom: 10px; }
-.logo-letter { font-size: 50px; font-weight: bold; color: #fff; }
-.brand-name { color: #fff; font-size: 3rem; letter-spacing: 10px; text-transform: uppercase; }
-.auth-card { background: rgba(20,20,20,0.9); padding: 30px; border-radius: 15px; border: 1px solid #333; width: 300px; }
-input { width: 100%; padding: 10px; margin: 10px 0; background: #000; border: 1px solid #444; color: #fff; box-sizing: border-box; }
-.btn-main { width: 100%; padding: 12px; background: #fff; font-weight: bold; cursor: pointer; }
-.hidden { opacity: 0; visibility: hidden; }
-.visible { opacity: 1; visibility: visible; transition: 2s; }
+body, html {
+    margin: 0; padding: 0; width: 100%; height: 100%;
+    background-color: #FFFFFF; /* FONDO BLANCO */
+    font-family: 'Segoe UI', sans-serif; overflow: hidden;
+}
+
+/* LA GALAXIA (Estrellas verdes y azules sobre blanco) */
+#galaxy-canvas {
+    position: fixed; top: 0; left: 0; z-index: 10;
+    background: radial-gradient(circle, #f0fff0 0%, #ffffff 100%);
+}
+
+/* EL BIG BANG (Verde potente) */
+#big-bang {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: #28a745; opacity: 0; z-index: 100; pointer-events: none;
+}
+
+.bang-flash { animation: flashEffect 0.8s ease-out forwards; }
+
+@keyframes flashEffect {
+    0% { opacity: 0; transform: scale(0.5); }
+    50% { opacity: 1; transform: scale(1); }
+    100% { opacity: 0; }
+}
+
+/* INTERFAZ PROVEED */
+#interface {
+    position: relative; z-index: 50; height: 100vh;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+}
+
+.brand-header { text-align: center; margin-bottom: 40px; }
+
+/* LOGO HEXAGONAL */
+.hexagon {
+    width: 100px; height: 110px; background: #28a745;
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto; filter: drop-shadow(0 5px 15px rgba(40,167,69,0.4));
+}
+
+.check {
+    width: 25px; height: 45px; border: solid white;
+    border-width: 0 8px 8px 0; transform: rotate(45deg);
+    margin-bottom: 10px;
+}
+
+.company-name {
+    color: #28a745; font-size: 4rem; letter-spacing: 12px;
+    font-weight: 900; margin-top: 20px; text-transform: uppercase;
+}
+
+/* LOGIN */
+.login-container {
+    background: #fff; padding: 40px; border-radius: 15px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1); border: 1px solid #eee;
+    width: 350px; text-align: center;
+}
+
+input {
+    width: 100%; padding: 15px; margin-bottom: 20px;
+    border: 1px solid #ddd; border-radius: 8px; background: #f9f9f9;
+    box-sizing: border-box; font-size: 1rem;
+}
+
+input:focus { border-color: #28a745; outline: none; }
+
+.btn-primary {
+    width: 100%; padding: 15px; background: #28a745;
+    color: white; border: none; border-radius: 8px;
+    font-weight: bold; cursor: pointer; font-size: 1.1rem;
+    transition: 0.3s;
+}
+
+.btn-primary:hover { background: #218838; transform: translateY(-2px); }
+
+.hidden { display: none !important; }
