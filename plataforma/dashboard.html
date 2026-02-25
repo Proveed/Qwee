@@ -1,24 +1,34 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>Dashboard PROVEED</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
-
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <title>Probet | Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body { 
+            background: #050505; 
+            color: white; 
+            font-family: 'Segoe UI', sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+        }
+        header {
+            width: 100%;
+            padding: 20px;
+            border-bottom: 1px solid #222;
+            text-align: center;
+        }
+    </style>
 </head>
-
-<body id="dashboardBody">
-
-<h1 id="welcome"></h1>
-<button onclick="logout()">Cerrar sesión</button>
-
-<script src="firebase-config.js"></script>
-<script src="dashboard.js"></script>
-
+<body>
+    <header>
+        <h1 style="letter-spacing: 5px; color: #fff;">PROBET</h1>
+    </header>
+    <main style="padding-top: 100px;">
+        <h2>Iniciando sistema...</h2>
+    </main>
+    <script src="dashboard.js"></script>
 </body>
 </html>
