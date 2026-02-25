@@ -1,51 +1,49 @@
 const canvas = document.getElementById('galaxy-canvas');
 const ctx = canvas.getContext('2d');
 const bang = document.getElementById('big-bang');
-const logo = document.getElementById('logo-probet');
+const authContainer = document.getElementById('auth-container');
 
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
-// Creación de estrellas
 let stars = [];
-for(let i = 0; i < 400; i++) {
+for(let i = 0; i < 300; i++) {
     stars.push({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
-        size: Math.random() * 1.8,
-        speed: Math.random() * 0.4
+        size: Math.random() * 1.5,
+        speed: Math.random() * 0.5
     });
 }
 
-function animateGalaxy() {
+function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.fillStyle = "rgba(255, 255, 255, 0.8)";
+    ctx.fillStyle = "white";
     stars.forEach(s => {
-        ctx.beginPath();
-        ctx.arc(s.x, s.y, s.size, 0, Math.PI * 2);
-        ctx.fill();
-        s.y += s.speed;
-        if(s.y > canvas.height) s.y = 0;
+        ctx.beginPath(); ctx.arc(s.x, s.y, s.size, 0, Math.PI * 2); ctx.fill();
+        s.y += s.speed; if(s.y > canvas.height) s.y = 0;
     });
-    requestAnimationFrame(animateGalaxy);
+    requestAnimationFrame(draw);
 }
-animateGalaxy();
+draw();
 
-// SECUENCIA DE TIEMPOS
+// SECUENCIA PROVEED
 setTimeout(() => {
-    // 1. Iniciamos la explosión
     bang.classList.add('animate-bang');
-    
     setTimeout(() => {
-        // 2. Quitamos estrellas y mostramos el logo de Probet
-        canvas.style.transition = "opacity 1s";
         canvas.style.opacity = "0";
-        logo.classList.remove('hidden');
-        logo.classList.add('visible');
-        
-        // 3. Redirección al Dashboard tras ver el logo
-        setTimeout(() => {
-            window.location.href = "dashboard.html";
-        }, 5000);
-    }, 900);
-}, 3500); // 3.5 segundos contemplando la galaxia
+        authContainer.classList.remove('hidden');
+        authContainer.classList.add('visible');
+    }, 1100);
+}, 3000);
+
+document.getElementById('auth-form').addEventListener('submit', (e) => {
+    e.preventDefault();
+    document.getElementById('btn-text').innerText = "CONECTANDO...";
+    setTimeout(() => { window.location.href = "dashboard.html"; }, 1500);
+});
+
+document.getElementById('toggle-auth').onclick = () => {
+    const title = document.getElementById('auth-title');
+    title.innerText = title.innerText === "Iniciar Sesión" ? "Crear Cuenta" : "Iniciar Sesión";
+};
