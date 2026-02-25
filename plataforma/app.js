@@ -1,51 +1,52 @@
-const canvas = document.getElementById('galaxy-canvas');
+const canvas = document.getElementById('galaxy');
 const ctx = canvas.getContext('2d');
-
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
-// Partículas de la Galaxia (Verdes y Grises para fondo blanco)
 let particles = [];
-for(let i = 0; i < 200; i++) {
+let angle = 0;
+
+// Crear 500 partículas para la galaxia
+for (let i = 0; i < 500; i++) {
     particles.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        radius: Math.random() * 2,
-        color: Math.random() > 0.5 ? '#28a745' : '#cccccc',
-        velocity: Math.random() * 0.5
+        dist: Math.random() * (canvas.width / 2),
+        angle: Math.random() * Math.PI * 2,
+        size: Math.random() * 3,
+        speed: 0.01 + Math.random() * 0.02
     });
 }
 
-function animate() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+function rotateGalaxy() {
+    ctx.fillStyle = "rgba(255, 255, 255, 0.3)"; // Efecto estela
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
     particles.forEach(p => {
-        ctx.fillStyle = p.color;
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-        ctx.fill();
-        p.y += p.velocity;
-        if(p.y > canvas.height) p.y = 0;
-    });
-    requestAnimationFrame(animate);
-}
-animate();
+        p.angle += p.speed; // Esto obliga a las estrellas a rotar
+        const x = canvas.width / 2 + Math.cos(p.angle) * p.dist;
+        const y = canvas.height / 2 + Math.sin(p.angle) * p.dist;
 
-// SECUENCIA MAESTRA
+        ctx.fillStyle = "#28a745"; // Color verde PROVEED
+        ctx.beginPath();
+        ctx.arc(x, y, p.size, 0, Math.PI * 2);
+        ctx.fill();
+    });
+    requestAnimationFrame(rotateGalaxy);
+}
+
+// Iniciar rotación
+rotateGalaxy();
+
+// SECUENCIA DE TIEMPO EXACTA
 setTimeout(() => {
-    const bang = document.getElementById('big-bang');
-    const interface = document.getElementById('interface');
+    const explosion = document.getElementById('explosion');
+    const interface = document.getElementById('app-interface');
     
-    // Activa Big Bang
-    bang.classList.add('bang-flash');
+    // 1. Ejecutar Big Bang
+    explosion.classList.add('animate-explosion');
     
+    // 2. Cambiar a Login a mitad de la explosión (0.35s)
     setTimeout(() => {
-        // Desaparece galaxia y aparece PROVEED
         canvas.style.display = 'none';
         interface.classList.remove('hidden');
-    }, 400);
-}, 3000); // 3 segundos de galaxia antes del estallido
-
-function iniciar() {
-    document.querySelector('.btn-primary').innerText = "CARGANDO...";
-    setTimeout(() => { window.location.href = "dashboard.html"; }, 1000);
-}
+    }, 350);
+}, 3000); // 3 segundos de galaxia girando
