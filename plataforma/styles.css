@@ -1,49 +1,30 @@
-body, html { 
-    margin: 0; padding: 0; width: 100%; height: 100%; 
-    background: #FFFFFF; overflow: hidden; font-family: 'Arial Black', sans-serif; 
+body, html { margin: 0; padding: 0; width: 100%; height: 100%; background: #ffffff; overflow: hidden; font-family: sans-serif; }
+#escenario-proveed { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; position: relative; }
+
+.pelota-verde {
+    position: absolute; width: 18px; height: 18px; background: #28a745; 
+    border-radius: 50%; top: -30px; transition: all 0.6s ease-in;
 }
 
-#escena { position: relative; width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+#logo-maestro { text-align: center; z-index: 10; transition: transform 0.4s ease; }
+.texto-verde { color: #28a745; font-size: 4.5rem; font-weight: 900; letter-spacing: 10px; margin-top: 15px; }
 
-/* Pelotitas verdes pequeñas */
-.pelotita {
-    position: absolute; width: 15px; height: 15px;
-    background: #28a745; border-radius: 50%; top: -20px;
-    transition: transform 0.8s cubic-bezier(0.17, 0.67, 0.83, 0.67);
-}
-
-/* LA PIEZA MAESTRA */
-#pieza-maestra {
-    position: relative; z-index: 10; text-align: center;
-    transition: all 0.5s ease-out;
-}
-
-.hexagono {
-    width: 100px; height: 115px; background: #28a745;
+.hexagono-proveed {
+    width: 110px; height: 125px; background: #28a745; margin: 0 auto;
     clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-    display: flex; align-items: center; justify-content: center; margin: 0 auto;
+    display: flex; align-items: center; justify-content: center;
+}
+.check-blanco {
+    width: 25px; height: 50px; border: solid white; border-width: 0 8px 8px 0;
+    transform: rotate(45deg); margin-bottom: 10px;
 }
 
-.check {
-    width: 25px; height: 50px; border: solid white;
-    border-width: 0 8px 8px 0; transform: rotate(45deg); margin-bottom: 10px;
-}
+#login-seccion { margin-top: 30px; animation: aparecer 1s forwards; }
+input { display: block; width: 280px; padding: 12px; margin: 10px auto; border: 1px solid #ddd; border-radius: 5px; }
+.boton-acceso { width: 300px; padding: 14px; background: #28a745; color: white; border: none; font-weight: bold; cursor: pointer; border-radius: 5px; }
 
-.empresa-nombre {
-    color: #28a745; font-size: 4rem; letter-spacing: 12px;
-    margin: 20px 0; text-transform: uppercase; font-weight: 900;
-}
+.oculto { opacity: 0; display: none; }
+.visible { opacity: 1; display: block; }
+.esparcir { transform: translate(var(--mx), var(--my)) scale(0); opacity: 0; transition: 0.8s; }
 
-/* LOGIN */
-#login-final {
-    margin-top: 20px; display: flex; flex-direction: column;
-    animation: fadeIn 1s forwards;
-}
-
-input { padding: 12px; margin: 5px; border: 1px solid #ddd; border-radius: 5px; width: 280px; }
-.btn-verde { padding: 12px; background: #28a745; color: white; border: none; font-weight: bold; cursor: pointer; border-radius: 5px; }
-
-.hidden { display: none !important; opacity: 0; }
-.esparcir { transform: translate(var(--x), var(--y)) scale(0); opacity: 0; transition: 1s forwards; }
-
-@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes aparecer { from { opacity: 0; } to { opacity: 1; } }
