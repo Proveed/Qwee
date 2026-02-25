@@ -3,20 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Probet | Inicio</title>
+    <title>PROVEED | Acceso</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div id="intro-container">
         <canvas id="galaxy-canvas"></canvas>
-        
         <div id="big-bang"></div>
         
-        <div id="logo-probet" class="hidden">
-            <img src="logo.png" alt="Probet Logo">
+        <div id="auth-container" class="hidden">
+            <div class="logo-wrapper">
+                <div class="css-logo">
+                    <div class="ring"></div>
+                    <span class="logo-letter">P</span>
+                </div>
+                <h1 class="brand-name">PROVEED</h1>
+            </div>
+            
+            <div class="auth-card">
+                <h2 id="auth-title">Iniciar Sesión</h2>
+                <form id="auth-form">
+                    <input type="email" placeholder="Correo Electrónico" required>
+                    <input type="password" placeholder="Contraseña" required>
+                    <button type="submit" class="btn-main" id="btn-text">ENTRAR</button>
+                </form>
+                <div class="auth-footer">
+                    ¿Nuevo aquí? <span id="toggle-auth">Crear Cuenta</span>
+                </div>
+            </div>
         </div>
     </div>
-
     <script src="app.js"></script>
 </body>
 </html>
