@@ -1,41 +1,48 @@
-const canvas = document.getElementById('galaxy');
-const ctx = canvas.getContext('2d');
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+window.onload = function() {
+    const contenedor = document.getElementById('contenedor-particulas');
+    const maestra = document.getElementById('pieza-maestra');
+    const login = document.getElementById('login-final');
+    const cantidad = 30; // Pelotitas base
 
-let stars = [];
-for(let i=0; i<400; i++) {
-    stars.push({
-        angle: Math.random() * Math.PI * 2,
-        dist: Math.random() * (canvas.width / 1.5),
-        speed: 0.01 + Math.random() * 0.02,
-        size: Math.random() * 3
-    });
-}
+    // 1. Caída de pelotitas pequeñas
+    for (let i = 0; i < cantidad; i++) {
+        setTimeout(() => {
+            const p = document.createElement('div');
+            p.className = 'pelotita';
+            p.style.left = (Math.random() * 80 + 10) + '%';
+            contenedor.appendChild(p);
+            
+            // Animación de caída al suelo (suelo = centro de pantalla)
+            setTimeout(() => {
+                p.style.top = (window.innerHeight / 2 + (Math.random() * 50 - 25)) + 'px';
+            }, 50);
+        }, i * 100);
+    }
 
-function draw() {
-    ctx.fillStyle = "rgba(255, 255, 255, 0.2)";
-    ctx.fillRect(0,0,canvas.width, canvas.height);
-    
-    stars.forEach(s => {
-        s.angle += s.speed;
-        const x = canvas.width/2 + Math.cos(s.angle) * s.dist;
-        const y = canvas.height/2 + Math.sin(s.angle) * s.dist;
-        ctx.fillStyle = "#28a745";
-        ctx.beginPath();
-        ctx.arc(x, y, s.size, 0, Math.PI*2);
-        ctx.fill();
-    });
-    requestAnimationFrame(draw);
-}
-draw();
-
-// SECUENCIA: A los 4 segundos explota y queda el Login
-setTimeout(() => {
-    document.getElementById('big-bang').classList.add('flash-bang');
-    
+    // 2. Cae la pieza maestra de PROVEED
     setTimeout(() => {
-        document.getElementById('intro-wrapper').classList.add('hidden');
-        document.getElementById('login-interface').classList.remove('hidden');
-    }, 400);
-}, 4000);
+        maestra.classList.remove('hidden');
+        maestra.style.position = 'absolute';
+        maestra.style.top = '-200px';
+        maestra.style.opacity = '1';
+        
+        setTimeout(() => {
+            maestra.style.top = '40%'; // Cae al centro
+            
+            // 3. Al impactar, esparcir las pequeñas
+            setTimeout(() => {
+                const pelotitas = document.querySelectorAll('.pelotita');
+                pelotitas.forEach(p => {
+                    const x = (Math.random() - 0.5) * 1000;
+                    const y = (Math.random() - 0.5) * 1000;
+                    p.style.setProperty('--x', x + 'px');
+                    p.style.setProperty('--y', y + 'px');
+                    p.classList.add('esparcir');
+                });
+                
+                // 4. Mostrar Login
+                login.classList.remove('hidden');
+            }, 600);
+        }, 100);
+    }, cantidad * 100 + 500);
+};
