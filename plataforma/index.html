@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PROVEED</title>
+<title>PROBET</title>
 <link rel="stylesheet" href="styles.css">
 </head>
 
@@ -11,62 +11,45 @@
 
 <!-- SPLASH -->
 <div id="splash">
-  <div class="particles"></div>
+
+  <div class="galaxy"></div>
+  <div class="bigbang"></div>
 
   <div class="logo-wrapper">
-    <div class="hexagon">
-      <div class="check"></div>
-    </div>
-    <h1 class="brand">PROVEED</h1>
+      <div class="hexagon">
+          <div class="check"></div>
+      </div>
+      <h1 class="brand">PROBET</h1>
   </div>
+
 </div>
 
 <!-- LOGIN -->
 <div id="auth" class="hidden">
-  <div class="auth-box">
 
-    <div class="logo-small">
-      <div class="hexagon small">
-        <div class="check"></div>
-      </div>
+    <div class="login-box">
+
+        <div class="logo-top">
+            <div class="hexagon small">
+                <div class="check"></div>
+            </div>
+            <h2>PROBET</h2>
+        </div>
+
+        <button class="btn primary">Iniciar sesión</button>
+        <button class="btn secondary">Crear cuenta</button>
+
     </div>
 
-    <h2>Accede a tu cuenta</h2>
-
-    <button class="btn primary">Iniciar sesión</button>
-    <button class="btn secondary">Crear cuenta</button>
-
-  </div>
 </div>
 
 <script>
 window.addEventListener("load", () => {
-
-  createParticles();
-
-  setTimeout(() => {
-    document.getElementById("splash").classList.add("hide");
-    document.getElementById("auth").classList.remove("hidden");
-  }, 2200);
-
+    setTimeout(() => {
+        document.getElementById("splash").classList.add("hide");
+        document.getElementById("auth").classList.remove("hidden");
+    }, 3000);
 });
-
-function createParticles() {
-  const container = document.querySelector(".particles");
-
-  for (let i = 0; i < 35; i++) {
-    const dot = document.createElement("div");
-    dot.classList.add("particle");
-
-    const angle = Math.random() * 360;
-    const distance = 200 + Math.random() * 200;
-
-    dot.style.setProperty("--x", Math.cos(angle) * distance + "px");
-    dot.style.setProperty("--y", Math.sin(angle) * distance + "px");
-
-    container.appendChild(dot);
-  }
-}
 </script>
 
 </body>
