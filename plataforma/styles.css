@@ -1,175 +1,68 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-body {
-  font-family: system-ui, sans-serif;
-  background: white;
-  overflow: hidden;
+#intro-container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: radial-gradient(circle at center, #050505 0%, #000 100%);
 }
 
-/* SPLASH */
-
-#splash {
-  position: fixed;
-  inset: 0;
-  background: radial-gradient(circle at center, #111 0%, #000 100%);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: opacity .8s ease;
+#galaxy-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
 }
 
-#splash.hide {
-  opacity: 0;
-  visibility: hidden;
-}
-
-/* GALAXY */
-
-.galaxy {
-  position: absolute;
-  width: 800px;
-  height: 800px;
-  background: radial-gradient(circle, rgba(164,255,0,0.15) 0%, transparent 60%);
-  border-radius: 50%;
-  animation: rotateGalaxy 12s linear infinite;
-}
-
-@keyframes rotateGalaxy {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-/* BIG BANG */
-
-.bigbang {
-  position: absolute;
-  width: 20px;
-  height: 20px;
-  background: #A4FF00;
-  border-radius: 50%;
-  animation: explode 1.5s ease-out forwards 1s;
-}
-
-@keyframes explode {
-  0% {
-    transform: scale(0);
-    opacity: 1;
-  }
-  60% {
-    transform: scale(25);
-    opacity: .6;
-  }
-  100% {
-    transform: scale(60);
+/* El destello del Big Bang */
+#big-bang {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    background: #fff;
+    border-radius: 50%;
+    z-index: 5;
     opacity: 0;
-  }
 }
 
-/* LOGO */
-
-.logo-wrapper {
-  position: relative;
-  text-align: center;
-  animation: fadeIn 1.5s ease 1.5s forwards;
-  opacity: 0;
+.animate-bang {
+    animation: bangEffect 1.5s ease-out forwards;
 }
 
-.brand {
-  margin-top: 20px;
-  font-size: 24px;
-  letter-spacing: 5px;
-  color: #A4FF00;
-  font-weight: 600;
+@keyframes bangEffect {
+    0% { transform: scale(0); opacity: 1; box-shadow: 0 0 10px #fff; }
+    40% { transform: scale(600); opacity: 1; background: #fff; box-shadow: 0 0 100px #fff; }
+    100% { transform: scale(3000); opacity: 0; }
 }
 
-.hexagon {
-  width: 110px;
-  height: 110px;
-  background: #A4FF00;
-  clip-path: polygon(
-    25% 6%, 75% 6%,
-    100% 50%,
-    75% 94%, 25% 94%,
-    0% 50%
-  );
-  display: flex;
-  justify-content: center;
-  align-items: center;
+/* Estilo del Logo */
+#logo-probet {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 2.5s ease-in, transform 2s ease-out;
 }
 
-.hexagon.small {
-  width: 55px;
-  height: 55px;
+#logo-probet img {
+    width: 400px; /* Tamaño optimizado para impacto */
+    max-width: 80%;
+    filter: drop-shadow(0 0 30px rgba(255,255,255,0.4));
 }
 
-.check {
-  width: 26px;
-  height: 14px;
-  border-left: 4px solid white;
-  border-bottom: 4px solid white;
-  transform: rotate(-45deg);
-}
-
-/* LOGIN */
-
-.hidden {
-  display: none;
-}
-
-#auth {
-  position: absolute;
-  inset: 0;
-  background: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.login-box {
-  width: 320px;
-  text-align: center;
-}
-
-.logo-top {
-  margin-bottom: 40px;
-}
-
-.logo-top h2 {
-  margin-top: 15px;
-  letter-spacing: 4px;
-}
-
-.btn {
-  width: 100%;
-  padding: 15px;
-  border-radius: 10px;
-  border: none;
-  font-weight: 600;
-  cursor: pointer;
-  transition: 0.3s ease;
-  margin-bottom: 18px;   /* 👈 separación elegante */
-}
-
-.primary {
-  background: #A4FF00;
-}
-
-.secondary {
-  background: #f2f2f2;
-}
-
-.btn:hover {
-  transform: translateY(-3px);
-}
-
-/* Animations */
-
-@keyframes fadeIn {
-  to {
-    opacity: 1;
-  }
-}
+.hidden { opacity: 0; transform: scale(0.7); }
+.visible { opacity: 1; transform: scale(1); }
