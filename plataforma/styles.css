@@ -1,68 +1,73 @@
 body, html {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    height: 100%;
+    margin: 0; padding: 0;
+    width: 100%; height: 100%;
     overflow: hidden;
     background-color: #000;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 #intro-container {
     position: relative;
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: radial-gradient(circle at center, #050505 0%, #000 100%);
+    width: 100vw; height: 100vh;
+    display: flex; justify-content: center; align-items: center;
 }
 
-#galaxy-canvas {
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 1;
-}
+#galaxy-canvas { position: absolute; top: 0; left: 0; z-index: 1; }
 
-/* El destello del Big Bang */
 #big-bang {
-    position: absolute;
-    width: 5px;
-    height: 5px;
-    background: #fff;
-    border-radius: 50%;
-    z-index: 5;
-    opacity: 0;
+    position: absolute; width: 4px; height: 4px;
+    background: #fff; border-radius: 50%; z-index: 5; opacity: 0;
 }
 
-.animate-bang {
-    animation: bangEffect 1.5s ease-out forwards;
-}
+.animate-bang { animation: bangEffect 1.5s ease-out forwards; }
 
 @keyframes bangEffect {
     0% { transform: scale(0); opacity: 1; box-shadow: 0 0 10px #fff; }
-    40% { transform: scale(600); opacity: 1; background: #fff; box-shadow: 0 0 100px #fff; }
-    100% { transform: scale(3000); opacity: 0; }
+    40% { transform: scale(800); opacity: 1; background: #fff; }
+    100% { transform: scale(3500); opacity: 0; }
 }
 
-/* Estilo del Logo */
-#logo-probet {
-    position: relative;
-    z-index: 10;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: opacity 2.5s ease-in, transform 2s ease-out;
+/* LOGO PROVEED */
+.logo-wrapper { display: flex; flex-direction: column; align-items: center; margin-bottom: 20px; }
+.css-logo {
+    position: relative; width: 100px; height: 100px;
+    display: flex; justify-content: center; align-items: center;
+}
+.ring {
+    position: absolute; width: 100%; height: 100%;
+    border: 4px solid transparent; border-top: 4px solid #007bff;
+    border-right: 4px solid #007bff; border-radius: 50%;
+    animation: rotateRing 2s linear infinite;
+}
+.logo-letter { font-size: 50px; font-weight: 900; color: #fff; text-shadow: 0 0 15px #007bff; z-index: 2; }
+
+@keyframes rotateRing { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+.brand-name {
+    color: #fff; font-size: 3rem; letter-spacing: 12px;
+    margin-top: 10px; text-transform: uppercase; font-weight: 800;
 }
 
-#logo-probet img {
-    width: 400px; /* Tamaño optimizado para impacto */
-    max-width: 80%;
-    filter: drop-shadow(0 0 30px rgba(255,255,255,0.4));
+/* AUTH CARD */
+.auth-card {
+    background: rgba(15, 15, 15, 0.9);
+    padding: 30px; border-radius: 15px;
+    border: 1px solid #333; backdrop-filter: blur(15px);
+    width: 320px; z-index: 10; text-align: center;
 }
+input {
+    width: 100%; padding: 12px; margin: 10px 0;
+    background: #000; border: 1px solid #444;
+    color: #fff; border-radius: 6px; box-sizing: border-box;
+}
+.btn-main {
+    width: 100%; padding: 12px; background: #fff; color: #000;
+    border: none; font-weight: 800; cursor: pointer;
+    transition: 0.3s; border-radius: 6px; margin-top: 10px;
+}
+.btn-main:hover { background: #007bff; color: #fff; }
 
-.hidden { opacity: 0; transform: scale(0.7); }
-.visible { opacity: 1; transform: scale(1); }
+.hidden { opacity: 0; transform: scale(0.8); pointer-events: none; }
+.visible { opacity: 1; transform: scale(1); transition: all 2s ease-out; }
+.auth-footer { color: #888; margin-top: 15px; font-size: 0.85rem; }
+#toggle-auth { color: #007bff; cursor: pointer; }
