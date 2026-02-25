@@ -1,58 +1,50 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>PROVEED - Plataforma</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <!-- Firebase CDN -->
-  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
-
-  <link rel="stylesheet" href="styles.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PROVEED</title>
+<link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
 
 <!-- SPLASH -->
 <div id="splash">
-  <div class="logoBox">
-    <div class="energyRing"></div>
-    <h1 class="logo">PROVEED</h1>
+  <div class="logo-container">
+    <div class="hexagon">
+      <div class="check"></div>
+    </div>
+    <h1 class="brand">PROVEED</h1>
   </div>
 </div>
 
-<!-- LOGIN / REGISTER -->
-<div id="authContainer" class="hidden">
-  <div class="card">
+<!-- LOGIN -->
+<div id="auth" class="hidden">
+  <div class="auth-box">
 
-    <h2>Acceso Plataforma</h2>
-
-    <div id="loginBox">
-      <input type="email" id="loginEmail" placeholder="Correo">
-      <input type="password" id="loginPin" placeholder="PIN">
-      <button onclick="login()">Iniciar sesión</button>
-      <p onclick="showRegister()">Crear cuenta</p>
+    <div class="logo-small">
+      <div class="hexagon small">
+        <div class="check"></div>
+      </div>
     </div>
 
-    <div id="roleSelect" class="hidden">
-      <h3>Selecciona tu perfil</h3>
-      <button class="greenBtn" onclick="selectRole('emprendedor')">Emprendedor</button>
-      <button class="orangeBtn" onclick="selectRole('proveedor')">Proveedor</button>
-    </div>
-
-    <div id="registerBox" class="hidden">
-      <input type="text" id="name" placeholder="Nombres">
-      <input type="email" id="email" placeholder="Correo">
-      <input type="password" id="pin" placeholder="PIN (mínimo 6 dígitos)">
-      <button onclick="register()">Crear cuenta</button>
-    </div>
+    <h2>Acceso</h2>
+    <input type="email" placeholder="Correo">
+    <input type="password" placeholder="PIN">
+    <button>Ingresar</button>
 
   </div>
 </div>
 
-<script src="firebase-config.js"></script>
-<script src="app.js"></script>
+<script>
+window.addEventListener("load", () => {
+  setTimeout(() => {
+    document.getElementById("splash").classList.add("hide");
+    document.getElementById("auth").classList.remove("hidden");
+  }, 1800);
+});
+</script>
 
 </body>
 </html>
