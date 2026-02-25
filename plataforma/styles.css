@@ -6,7 +6,8 @@
 
 body {
   font-family: system-ui, sans-serif;
-  background: #ffffff;
+  background: white;
+  overflow: hidden;
 }
 
 /* SPLASH */
@@ -14,12 +15,11 @@ body {
 #splash {
   position: fixed;
   inset: 0;
-  background: #ffffff;
+  background: radial-gradient(circle at center, #111 0%, #000 100%);
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow: hidden;
-  transition: opacity .7s ease;
+  transition: opacity .8s ease;
 }
 
 #splash.hide {
@@ -27,32 +27,44 @@ body {
   visibility: hidden;
 }
 
-/* PARTICLES */
+/* GALAXY */
 
-.particles {
+.galaxy {
   position: absolute;
-  width: 100%;
-  height: 100%;
+  width: 800px;
+  height: 800px;
+  background: radial-gradient(circle, rgba(164,255,0,0.15) 0%, transparent 60%);
+  border-radius: 50%;
+  animation: rotateGalaxy 12s linear infinite;
 }
 
-.particle {
+@keyframes rotateGalaxy {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* BIG BANG */
+
+.bigbang {
   position: absolute;
-  width: 6px;
-  height: 6px;
+  width: 20px;
+  height: 20px;
   background: #A4FF00;
   border-radius: 50%;
-  top: 50%;
-  left: 50%;
-  animation: explode 1.4s ease-out forwards;
+  animation: explode 1.5s ease-out forwards 1s;
 }
 
 @keyframes explode {
   0% {
-    transform: translate(-50%, -50%) scale(0);
+    transform: scale(0);
     opacity: 1;
   }
+  60% {
+    transform: scale(25);
+    opacity: .6;
+  }
   100% {
-    transform: translate(calc(-50% + var(--x)), calc(-50% + var(--y))) scale(1);
+    transform: scale(60);
     opacity: 0;
   }
 }
@@ -60,18 +72,18 @@ body {
 /* LOGO */
 
 .logo-wrapper {
-  position: absolute;
+  position: relative;
   text-align: center;
-  animation: fadeIn 1.2s ease 1s forwards;
+  animation: fadeIn 1.5s ease 1.5s forwards;
   opacity: 0;
 }
 
 .brand {
   margin-top: 20px;
-  font-size: 22px;
-  letter-spacing: 4px;
-  font-weight: 600;
+  font-size: 24px;
+  letter-spacing: 5px;
   color: #A4FF00;
+  font-weight: 600;
 }
 
 .hexagon {
@@ -109,30 +121,37 @@ body {
 }
 
 #auth {
-  height: 100vh;
+  position: absolute;
+  inset: 0;
+  background: white;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.auth-box {
-  width: 340px;
+.login-box {
+  width: 320px;
   text-align: center;
 }
 
-.logo-small {
-  margin-bottom: 25px;
+.logo-top {
+  margin-bottom: 40px;
+}
+
+.logo-top h2 {
+  margin-top: 15px;
+  letter-spacing: 4px;
 }
 
 .btn {
   width: 100%;
-  padding: 14px;
-  margin-bottom: 15px;
+  padding: 15px;
   border-radius: 10px;
   border: none;
   font-weight: 600;
   cursor: pointer;
-  transition: .3s ease;
+  transition: 0.3s ease;
+  margin-bottom: 18px;   /* 👈 separación elegante */
 }
 
 .primary {
@@ -140,11 +159,11 @@ body {
 }
 
 .secondary {
-  background: #f5f5f5;
+  background: #f2f2f2;
 }
 
 .btn:hover {
-  transform: translateY(-2px);
+  transform: translateY(-3px);
 }
 
 /* Animations */
