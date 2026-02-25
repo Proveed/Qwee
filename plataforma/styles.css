@@ -28,12 +28,18 @@ body {
   visibility: hidden;
 }
 
-.logo-container {
-  text-align: center;
-  animation: fadeIn 1.2s ease;
-}
 
-.brand {
+.logo-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 1.2s ease;
+}.brand {
   margin-top: 20px;
   font-size: 22px;
   letter-spacing: 4px;
