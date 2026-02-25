@@ -1,56 +1,22 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PROBET</title>
-<link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Probet | Inicio</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
-
-<!-- SPLASH -->
-<div id="splash">
-
-  <div class="galaxy"></div>
-  <div class="bigbang"></div>
-
-  <div class="logo-wrapper">
-      <div class="hexagon">
-          <div class="check"></div>
-      </div>
-      <h1 class="brand">PROBET</h1>
-  </div>
-
-</div>
-
-<!-- LOGIN -->
-<div id="auth" class="hidden">
-
-    <div class="login-box">
-
-        <div class="logo-top">
-            <div class="hexagon small">
-                <div class="check"></div>
-            </div>
-            <h2>PROBET</h2>
+    <div id="intro-container">
+        <canvas id="galaxy-canvas"></canvas>
+        
+        <div id="big-bang"></div>
+        
+        <div id="logo-probet" class="hidden">
+            <img src="logo.png" alt="Probet Logo">
         </div>
-
-        <button class="btn primary">Iniciar sesión</button>
-        <button class="btn secondary">Crear cuenta</button>
-
     </div>
 
-</div>
-
-<script>
-window.addEventListener("load", () => {
-    setTimeout(() => {
-        document.getElementById("splash").classList.add("hide");
-        document.getElementById("auth").classList.remove("hidden");
-    }, 3000);
-});
-</script>
-
+    <script src="app.js"></script>
 </body>
 </html>
