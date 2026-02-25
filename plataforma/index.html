@@ -11,7 +11,9 @@
 
 <!-- SPLASH -->
 <div id="splash">
-  <div class="logo-container">
+  <div class="particles"></div>
+
+  <div class="logo-wrapper">
     <div class="hexagon">
       <div class="check"></div>
     </div>
@@ -29,21 +31,42 @@
       </div>
     </div>
 
-    <h2>Acceso</h2>
-    <input type="email" placeholder="Correo">
-    <input type="password" placeholder="PIN">
-    <button>Ingresar</button>
+    <h2>Accede a tu cuenta</h2>
+
+    <button class="btn primary">Iniciar sesión</button>
+    <button class="btn secondary">Crear cuenta</button>
 
   </div>
 </div>
 
 <script>
 window.addEventListener("load", () => {
+
+  createParticles();
+
   setTimeout(() => {
     document.getElementById("splash").classList.add("hide");
     document.getElementById("auth").classList.remove("hidden");
-  }, 1800);
+  }, 2200);
+
 });
+
+function createParticles() {
+  const container = document.querySelector(".particles");
+
+  for (let i = 0; i < 35; i++) {
+    const dot = document.createElement("div");
+    dot.classList.add("particle");
+
+    const angle = Math.random() * 360;
+    const distance = 200 + Math.random() * 200;
+
+    dot.style.setProperty("--x", Math.cos(angle) * distance + "px");
+    dot.style.setProperty("--y", Math.sin(angle) * distance + "px");
+
+    container.appendChild(dot);
+  }
+}
 </script>
 
 </body>
