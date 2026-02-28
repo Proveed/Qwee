@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>SAM PREMIUM | SISTEMA TOTAL</title>
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@900&family=Montserrat:wght@300;400;700;800&display=swap" rel="stylesheet">
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+    <style>
+        :root { --accent: #FF7A00; --dark: #000; --gray: #F2F2F7; --red: #FF3B30; --green: #28a745; }
+        * { box-sizing: border-box; font-family: 'Montserrat', sans-serif; outline: none; -webkit-tap-highlight-color: transparent; }
+        body { margin: 0; background: #FFF; overflow: hidden; }
+
+        /* ACCESO */
+        #screen-splash { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; background: #FFF; position: fixed; width: 100%; z-index: 5000; transition: 0.5s; }
+        .logo-sam { font-family: 'Exo 2', sans-serif; font-weight: 900; font-size: 75px; letter-spacing: 15px; color: var(--accent); text-transform: uppercase; cursor: pointer; }
+        .pin-display { font-size: 45px; letter-spacing: 12px; margin-bottom: 20px; color: var(--accent); font-weight: 900; height: 50px; }
+        .grid-keys { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
+        .key { width: 70px; height: 70px; border-radius: 50%; background: var(--gray); display: flex; justify-content: center; align-items: center; font-size: 26px; font-weight: 600; cursor: pointer; border: 1px solid #DDD; }
+        .key.ok { background: var(--accent); color: white; font-size: 16px; font-weight: 900; border: none; }
+
+        /* PANELES */
+        .panel { display: none; position: absolute; inset: 0; background: #F9F9F9; overflow-y: auto; padding-bottom: 100px; }
+        .header { background: var(--dark); color: #FFF; padding: 40px 20px 30px; border-radius: 0 0 40px 40px; text-align: center; }
+        .nav-top { background: #000; color: white; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 100; font-size: 13px; font-weight: 800; }
+
+        /* CARDS */
+        .card { background: #FFF; padding: 20px; border-radius: 20px; margin: 12px 18px; border: 1px solid #EEE; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 4px 10px rgba(0,0,0,0.02); cursor: pointer; }
+        .status-dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; margin-right: 8px; }
+
+        /* MODALES */
+        .modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.9); z-index: 9999; justify-content: center; align-items: center; backdrop-filter: blur(10px); padding: 15px; }
+        .box { background: #FFF; width: 100%; max-width: 480px; padding: 25px; border-radius: 35px; max-height: 90vh; overflow-y: auto; }
+        label { font-size: 10px; color: #888; font-weight: 800; text-transform: uppercase; display: block; margin-top: 12px; border-bottom: 1px solid #EEE; padding-bottom: 4px; }
+        input, select { width: 100%; padding: 14px; margin: 5px 0; border-radius: 12px; border: 1px solid #DDD; background: var(--gray); font-size: 15px; font-weight: 600; }
+        .info-row { display: flex; justify-content: space-between; padding: 8px 0; font-size: 14px; border-bottom: 1px solid #F9F9F9; }
+        
+        .wa-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-top: 10px; }
+        .wa-btn { background: #25D366; color: white; border: none; padding: 10px 5px; border-radius: 10px; font-size: 9px; font-weight: 800; cursor: pointer; text-transform: uppercase; }
+        .hist-box { background: #F2F2F7; padding: 15px; border-radius: 15px; margin: 10px 0; max-height: 120px; overflow-y: auto; font-size: 13px; }
+        
+        .btn-m { width: 100%; padding: 16px; border-radius: 15px; border: none; background: var(--accent); color: white; font-weight: 900; cursor: pointer; margin-top: 10px; }
+        .btn-exit { background: var(--red); color: white; border: none; padding: 8px 15px; border-radius: 10px; font-weight: 800; font-size: 11px; }
+        .fab { position: fixed; bottom: 30px; right: 25px; background: var(--accent); color: white; width: 70px; height: 70px; border-radius: 22px; border: none; font-size: 40px; box-shadow: 0 10px 25px rgba(255,122,0,0.4); }
+    </style>
+</head>
+<body>
+
+    <div id="screen-splash">
+        <div class="logo-sam" id="logo-main" onclick="abrirTeclado(false)">SAM</div>
+        <div id="keypad-box" style="display:none; flex-direction:column; align-items:center; margin-top:20px">
+            <div id="mode-text" style="font-size: 10px; font-weight: 800; color: #888;">ACCESO</div>
+            <div id="pin-dots" class="pin-display"></div>
+            <div class="grid-keys">
+                <div class="key" onclick="teclear(1)">1</div><div class="key" onclick="teclear(2)">2</div><div class="key" onclick="teclear(3)">3</div>
+                <div class="key" onclick="teclear(4)">4</div><div class="key" onclick="teclear(5)">5</div><div class="key" onclick="teclear(6)">6</div>
+                <div class="key" onclick="teclear(7)">7</div><div class="key" onclick="teclear(8)">8</div><div class="key" onclick="teclear(9)">9</div>
+                <div class="key" style="color:var(--red)" onclick="teclear('C')">C</div><div class="key" onclick="teclear(0)">0</div><div class="key ok" onclick="validar()">OK</div>
+            </div>
+            <label style="border:none; margin-top:20px">CERRAR SESIÓN EN:</label>
+            <select id="session-limit" style="width:160px; background:white">
+                <option value="60000">1 Minuto</option>
+                <option value="3600000" selected>1 Hora</option>
+                <option value="7200000">2 Horas</option>
+            </select>
+        </div>
+        <div style="position:absolute; bottom:0; width:100%; height:80px" onclick="abrirTeclado(true)"></div>
+    </div>
+
+    <div id="p-admin" class="panel">
+        <div class="nav-top">ADMINISTRACIÓN <button class="btn-exit" onclick="location.reload()">SALIR</button></div>
+        <div style="padding:20px">
+            <button class="btn-m" style="background:#000" onclick="openM('m-nuevo-u')">+ NUEVO COBRADOR</button>
+            <label>CONTROL DE PERSONAL</label>
+            <div id="lista-usuarios-admin"></div>
+        </div>
+    </div>
+
+    <div id="p-user" class="panel">
+        <div class="nav-top"><span id="nom-u-nav">COBRADOR</span> <button class="btn-exit" onclick="location.reload()">SALIR</button></div>
+        <div class="header">
+            <div class="session-info" style="font-size:10px; color:#AAA">TIEMPO ACTIVO: <span id="timer-display">00:00</span></div>
+            <div id="u-total" style="font-size:45px; font-weight:900; color:var(--accent)">$ 0.00</div>
+        </div>
+        <div id="lista-clientes"></div>
+        <button class="fab" onclick="openM('m-nuevo-cliente')">+</button>
+    </div>
+
+    <div id="m-det-cliente" class="modal">
+        <div class="box">
+            <h2 id="det-cli-nom" style="color:var(--accent); margin:0">CLIENTE</h2>
+            <div class="info-row"><span>Producto / Guía:</span><b id="det-cli-prod">---</b></div>
+            <div class="info-row"><span>Dirección:</span><b id="det-cli-dir">---</b></div>
+            <div class="info-row"><span>Frecuencia:</span><b id="det-cli-frec">---</b></div>
+            <div class="info-row" style="font-size:18px"><span>Saldo Actual:</span><b id="det-cli-saldo" style="color:var(--red)">$ 0.00</b></div>
+
+            <label>NOTIFICACIONES WHATSAPP</label>
+            <div class="wa-grid">
+                <button class="wa-btn" onclick="enviarWA(1)">RECORDAR</button>
+                <button class="wa-btn" onclick="enviarWA(2)" style="background:#FF9500">PAGO HOY</button>
+                <button class="wa-btn" onclick="enviarWA(3)" style="background:var(--red)">ATRASADO</button>
+            </div>
+
+            <label>HISTORIAL DE ABONOS</label>
+            <div id="det-cli-hist" class="hist-box"></div>
+
+            <label>GESTIÓN DE CUENTA</label>
+            <input type="number" id="input-abono" placeholder="Monto Abono $">
+            <button class="btn-m" onclick="registrarAbono()">REGISTRAR PAGO</button>
+            <button class="btn-m" style="background:var(--red)" onclick="eliminarDeuda()">ELIMINAR DEUDA</button>
+            <button class="btn-m" style="background:none; color:#888" onclick="closeM()">CERRAR</button>
+        </div>
+    </div>
+
+    <div id="m-nuevo-cliente" class="modal">
+        <div class="box">
+            <h3>NUEVA VENTA</h3>
+            <label>Nombre</label><input type="text" id="nc-nom">
+            <label>Producto / Guía</label><input type="text" id="nc-prod">
+            <label>WhatsApp</label>
+            <div style="display:flex; gap:5px">
+                <select id="nc-pref" style="width:90px"><option value="593">+593</option><option value="57">+57</option></select>
+                <input type="number" id="nc-tel" style="flex:1">
+            </div>
+            <div style="display:flex; gap:10px">
+                <div style="flex:1"><label>Total $</label><input type="number" id="nc-tot"></div>
+                <div style="flex:1"><label>Entrada $</label><input type="number" id="nc-ini" value="0"></div>
+            </div>
+            <label>Dirección</label><input type="text" id="nc-dir">
+            <label>Frecuencia</label><select id="nc-frec"><option>Diario</option><option>Semanal</option><option>Quincenal</option><option>Mensual</option></select>
+            <button class="btn-m" onclick="crearCli()">GUARDAR VENTA</button>
+            <button class="btn-m" style="background:none; color:#888" onclick="closeM()">CANCELAR</button>
+        </div>
+    </div>
+
+    <div id="m-edit-u" class="modal">
+        <div class="box">
+            <h3>EDITAR PERFIL</h3>
+            <label>Nombre</label><input type="text" id="ed-u-nom">
+            <label>PIN Acceso</label><input type="number" id="ed-u-pin">
+            <label>Estado</label><select id="ed-u-status"><option value="activo">ACTIVO</option><option value="desactivado">DESACTIVADO</option></select>
+            <label>Vigencia Hasta</label><input type="date" id="ed-u-vence">
+            <button class="btn-m" onclick="actualizarU()">GUARDAR CAMBIOS</button>
+            <button class="btn-m" style="background:var(--red)" onclick="eliminarU()">ELIMINAR</button>
+            <button class="btn-m" style="background:none; color:#888" onclick="closeM()">CANCELAR</button>
+        </div>
+    </div>
+
+    <div id="m-nuevo-u" class="modal"><div class="box"><h3>NUEVO COBRADOR</h3><label>Nombre</label><input type="text" id="nu-nom"><label>PIN</label><input type="number" id="nu-pin"><label>Vigencia</label><input type="date" id="nu-vence"><button class="btn-m" onclick="crearU()">CREAR</button></div></div>
+
+<script>
+    const firebaseConfig = { apiKey: "AIzaSyCMsogo0q4Dnfekl8yo1L3lNX5Nq4uDSCE", authDomain: "samsow-ec106.firebaseapp.com", projectId: "samsow-ec106", appId: "1:357978468958:web:aae1c84c9e84744e5f3acf" };
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+
+    let pinIngresado = "", pinMaster = "2306", esModoAdmin = false, uSesion = null, cliActivo = null, uActivoAdmin = null;
+    let startTime, timerInterval;
+
+    function abrirTeclado(admin) { esModoAdmin = admin; document.getElementById('keypad-box').style.display = 'flex'; }
+    function teclear(n) { if(n==='C') pinIngresado = ""; else if(pinIngresado.length < 4) pinIngresado += n; document.getElementById('pin-dots').innerText = "•".repeat(pinIngresado.length); }
+
+    async function validar() {
+        if(esModoAdmin && pinIngresado === pinMaster) { iniciarSesion('admin'); }
+        else if(!esModoAdmin) {
+            const q = await db.collection("usuarios").where("pin", "==", pinIngresado).get();
+            if(!q.empty) {
+                const user = q.docs[0].data();
+                const hoy = new Date().toISOString().split('T')[0];
+                if(user.status === 'desactivado' || (user.vence && hoy > user.vence)) alert("ACCESO DENEGADO / EXPIRADO");
+                else { uSesion = user; iniciarSesion('user'); }
+            } else alert("PIN INCORRECTO");
+        }
+        pinIngresado = ""; document.getElementById('pin-dots').innerText = "";
+    }
+
+    function iniciarSesion(tipo) {
+        document.getElementById('screen-splash').style.display = 'none';
+        if(tipo === 'admin') { document.getElementById('p-admin').style.display = 'block'; cargarUsuariosAdmin(); }
+        else { document.getElementById('p-user').style.display = 'block'; document.getElementById('nom-u-nav').innerText = uSesion.nombre; cargarClientes(); }
+        
+        startTime = Date.now();
+        const limit = parseInt(document.getElementById('session-limit').value);
+        timerInterval = setInterval(() => {
+            const diff = Math.floor((Date.now() - startTime) / 1000);
+            document.getElementById('timer-display').innerText = `${Math.floor(diff/60).toString().padStart(2,'0')}:${(diff%60).toString().padStart(2,'0')}`;
+        }, 1000);
+        setTimeout(() => location.reload(), limit);
+    }
+
+    function cargarClientes() {
+        db.collection("clientes").where("creadoPor", "==", uSesion.nombre).onSnapshot(snap => {
+            let h = ""; let total = 0;
+            snap.forEach(doc => {
+                const c = doc.data(); c.id = doc.id; total += c.saldo;
+                h += `<div class="card" onclick='abrirFicha(${JSON.stringify(c)})'><div><b>${c.nombre}</b><br><small>${c.prod || 'General'}</small></div><b>$${c.saldo.toFixed(2)}</b></div>`;
+            });
+            document.getElementById('u-total').innerText = `$ ${total.toFixed(2)}`;
+            document.getElementById('lista-clientes').innerHTML = h;
+        });
+    }
+
+    function abrirFicha(c) {
+        cliActivo = c;
+        document.getElementById('det-cli-nom').innerText = c.nombre;
+        document.getElementById('det-cli-prod').innerText = c.prod || "---";
+        document.getElementById('det-cli-dir').innerText = c.direccion || "---";
+        document.getElementById('det-cli-frec').innerText = c.frecuencia || "---";
+        document.getElementById('det-cli-saldo').innerText = `$ ${c.saldo.toFixed(2)}`;
+        let hHTML = ""; (c.historial || []).reverse().forEach(p => hHTML += `<div class="info-row"><span>${p.fecha}</span><b>+$${p.monto}</b></div>`);
+        document.getElementById('det-cli-hist').innerHTML = hHTML || "Sin movimientos.";
+        openM('m-det-cliente');
+    }
+
+    function registrarAbono() {
+        const m = parseFloat(document.getElementById('input-abono').value); if(!m) return;
+        db.collection("clientes").doc(cliActivo.id).update({
+            saldo: cliActivo.saldo - m,
+            historial: firebase.firestore.FieldValue.arrayUnion({ monto: m, fecha: new Date().toLocaleDateString() })
+        }).then(() => { closeM(); document.getElementById('input-abono').value = ""; });
+    }
+
+    function eliminarDeuda() { if(confirm("¿Saldar deuda?")) db.collection("clientes").doc(cliActivo.id).update({ saldo: 0 }).then(closeM); }
+
+    function crearCli() {
+        db.collection("clientes").add({
+            nombre: document.getElementById('nc-nom').value, prod: document.getElementById('nc-prod').value,
+            prefijo: document.getElementById('nc-pref').value, telefono: document.getElementById('nc-tel').value,
+            saldo: parseFloat(document.getElementById('nc-tot').value) - parseFloat(document.getElementById('nc-ini').value),
+            direccion: document.getElementById('nc-dir').value, frecuencia: document.getElementById('nc-frec').value,
+            creadoPor: uSesion.nombre, historial: []
+        }).then(closeM);
+    }
+
+    function enviarWA(t) {
+        const msgs = ["Aviso de cuota.","Hoy paso por el pago.","⚠️ Pago atrasado."];
+        window.open(`https://wa.me/${cliActivo.prefijo}${cliActivo.telefono}?text=${encodeURI(msgs[t-1])}`);
+    }
+
+    // ADMIN USERS
+    function cargarUsuariosAdmin() {
+        db.collection("usuarios").onSnapshot(snap => {
+            let h = ""; snap.forEach(doc => {
+                const u = doc.data(); u.id = doc.id;
+                h += `<div class="card" onclick='abrirEdicionU(${JSON.stringify(u)})'><span><span class="status-dot" style="background:${u.status === 'activo' ? 'var(--green)' : 'var(--red)'}"></span><b>${u.nombre}</b></span><small>PIN: ${u.pin}</small></div>`;
+            });
+            document.getElementById('lista-usuarios-admin').innerHTML = h;
+        });
+    }
+
+    function abrirEdicionU(u) {
+        uActivoAdmin = u;
+        document.getElementById('ed-u-nom').value = u.nombre;
+        document.getElementById('ed-u-pin').value = u.pin;
+        document.getElementById('ed-u-status').value = u.status;
+        document.getElementById('ed-u-vence').value = u.vence || '';
+        openM('m-edit-u');
+    }
+
+    function actualizarU() {
+        db.collection("usuarios").doc(uActivoAdmin.id).update({
+            nombre: document.getElementById('ed-u-nom').value, pin: document.getElementById('ed-u-pin').value,
+            status: document.getElementById('ed-u-status').value, vence: document.getElementById('ed-u-vence').value
+        }).then(closeM);
+    }
+
+    function crearU() {
+        db.collection("usuarios").add({
+            nombre: document.getElementById('nu-nom').value, pin: document.getElementById('nu-pin').value,
+            status: 'activo', vence: document.getElementById('nu-vence').value
+        }).then(closeM);
+    }
+
+    function eliminarU() { if(confirm("¿Eliminar?")) db.collection("usuarios").doc(uActivoAdmin.id).delete().then(closeM); }
+    function openM(id) { document.getElementById(id).style.display = 'flex'; }
+    function closeM() { document.querySelectorAll('.modal').forEach(m => m.style.display = 'none'); }
+</script>
+</body>
+</html>
