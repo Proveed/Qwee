@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>SAM PREMIUM | SISTEMA TOTAL</title>
+    <title>SAM | SISTEMA TOTAL</title>
     <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@900&family=Montserrat:wght@300;400;700;800&display=swap" rel="stylesheet">
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
@@ -12,24 +12,86 @@
         * { box-sizing: border-box; font-family: 'Montserrat', sans-serif; outline: none; -webkit-tap-highlight-color: transparent; }
         body { margin: 0; background: #FFF; overflow: hidden; }
 
-        /* ACCESO */
-        #screen-splash { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; background: #FFF; position: fixed; width: 100%; z-index: 5000; transition: 0.5s; }
-        .logo-sam { font-family: 'Exo 2', sans-serif; font-weight: 900; font-size: 75px; letter-spacing: 15px; color: var(--accent); text-transform: uppercase; cursor: pointer; }
-        .pin-display { font-size: 45px; letter-spacing: 12px; margin-bottom: 20px; color: var(--accent); font-weight: 900; height: 50px; }
-        .grid-keys { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
-        .key { width: 70px; height: 70px; border-radius: 50%; background: var(--gray); display: flex; justify-content: center; align-items: center; font-size: 26px; font-weight: 600; cursor: pointer; border: 1px solid #DDD; }
-        .key.ok { background: var(--accent); color: white; font-size: 16px; font-weight: 900; border: none; }
+        #screen-splash { 
+    height: 100vh; 
+    display: flex; 
+    flex-direction: column; 
+    /* Cambiado de flex-start a center para centrado vertical */
+    justify-content: center; 
+    align-items: center; 
+    background: #FFF; 
+    position: fixed; 
+    width: 100%; 
+    z-index: 5000; 
+    transition: 0.5s; 
+    /* Eliminado el padding-top que lo empujaba hacia arriba */
+}
 
-        /* PANELES */
+        /* EL LOGO QUE TE GUSTA: MODERNO Y ANARANJADO */
+        .logo-sam { 
+            font-family: 'Exo 2', sans-serif; /* La fuente moderna que elegiste */
+            font-weight: 900; 
+            font-size: 75px; 
+            padding-left: 15px; 
+            letter-spacing: 15px; 
+            color: #FF7A00; /* Tu naranja vibrante */
+            text-transform: uppercase; 
+            cursor: pointer; 
+            margin-bottom: 20px; 
+            text-align: center;
+            text-shadow: 2px 2px 10px rgba(255, 122, 0, 0.2); /* Un toque de brillo */
+        }
+
+        /* EL TECLADO EN CUADRÍCULA 3x4 */
+        .grid-keys { 
+            display: grid; 
+            grid-template-columns: repeat(3, 1fr); 
+            gap: 15px; 
+            width: 260px; 
+            margin: 0 auto; 
+        }
+
+        .key { 
+            width: 70px; 
+            height: 70px; 
+            background: #f4f4f4; 
+            border-radius: 50%; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            font-size: 24px; 
+            font-weight: 700; 
+            color: #000; 
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .pin-display { 
+            height: 40px; 
+            font-size: 35px; 
+            color: #FF7A00; /* Naranja haciendo juego con el logo */
+            letter-spacing: 10px; 
+            margin-bottom: 15px;
+            text-align: center;
+        }
+ .key:active { background: #ddd; transform: scale(0.9); }
+        .pin-display { 
+            height: 40px; 
+            font-size: 35px; 
+            color: var(--accent); 
+            letter-spacing: 10px; 
+            margin-bottom: 10px;
+            text-align: center;
+        }
+   .key.ok { background: var(--accent); color: white; font-size: 16px; font-weight: 900; border: none; }
+
         .panel { display: none; position: absolute; inset: 0; background: #F9F9F9; overflow-y: auto; padding-bottom: 100px; }
         .header { background: var(--dark); color: #FFF; padding: 40px 20px 30px; border-radius: 0 0 40px 40px; text-align: center; }
         .nav-top { background: #000; color: white; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 100; font-size: 13px; font-weight: 800; }
 
-        /* CARDS */
         .card { background: #FFF; padding: 20px; border-radius: 20px; margin: 12px 18px; border: 1px solid #EEE; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 4px 10px rgba(0,0,0,0.02); cursor: pointer; }
-        .status-dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; margin-right: 8px; }
+        .status-dot { width: 12px; height: 12px; border-radius: 50%; display: inline-block; margin-right: 8px; flex-shrink: 0; }
 
-        /* MODALES */
         .modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.9); z-index: 9999; justify-content: center; align-items: center; backdrop-filter: blur(10px); padding: 15px; }
         .box { background: #FFF; width: 100%; max-width: 480px; padding: 25px; border-radius: 35px; max-height: 90vh; overflow-y: auto; }
         label { font-size: 10px; color: #888; font-weight: 800; text-transform: uppercase; display: block; margin-top: 12px; border-bottom: 1px solid #EEE; padding-bottom: 4px; }
@@ -90,6 +152,7 @@
     <div id="m-det-cliente" class="modal">
         <div class="box">
             <h2 id="det-cli-nom" style="color:var(--accent); margin:0">CLIENTE</h2>
+            <div class="info-row"><span>Fecha Cobro:</span><b id="det-cli-fcobro">---</b></div>
             <div class="info-row"><span>Producto / Guía:</span><b id="det-cli-prod">---</b></div>
             <div class="info-row"><span>Dirección:</span><b id="det-cli-dir">---</b></div>
             <div class="info-row"><span>Frecuencia:</span><b id="det-cli-frec">---</b></div>
@@ -108,7 +171,7 @@
             <label>GESTIÓN DE CUENTA</label>
             <input type="number" id="input-abono" placeholder="Monto Abono $">
             <button class="btn-m" onclick="registrarAbono()">REGISTRAR PAGO</button>
-            <button class="btn-m" style="background:var(--red)" onclick="eliminarDeuda()">ELIMINAR DEUDA</button>
+            <button class="btn-m" style="background:var(--red)" onclick="eliminarClienteCompleto()">ELIMINAR DEUDA Y CLIENTE</button>
             <button class="btn-m" style="background:none; color:#888" onclick="closeM()">CERRAR</button>
         </div>
     </div>
@@ -128,6 +191,7 @@
                 <div style="flex:1"><label>Entrada $</label><input type="number" id="nc-ini" value="0"></div>
             </div>
             <label>Dirección</label><input type="text" id="nc-dir">
+            <label>Fecha de Cobro</label><input type="date" id="nc-fecha">
             <label>Frecuencia</label><select id="nc-frec"><option>Diario</option><option>Semanal</option><option>Quincenal</option><option>Mensual</option></select>
             <button class="btn-m" onclick="crearCli()">GUARDAR VENTA</button>
             <button class="btn-m" style="background:none; color:#888" onclick="closeM()">CANCELAR</button>
@@ -191,9 +255,20 @@
     function cargarClientes() {
         db.collection("clientes").where("creadoPor", "==", uSesion.nombre).onSnapshot(snap => {
             let h = ""; let total = 0;
+            const hoy = new Date().toISOString().split('T')[0];
             snap.forEach(doc => {
                 const c = doc.data(); c.id = doc.id; total += c.saldo;
-                h += `<div class="card" onclick='abrirFicha(${JSON.stringify(c)})'><div><b>${c.nombre}</b><br><small>${c.prod || 'General'}</small></div><b>$${c.saldo.toFixed(2)}</b></div>`;
+                
+                let color = "var(--green)";
+                if(c.saldo > 0 && c.fechaCobro && c.fechaCobro < hoy) color = "var(--red)";
+
+                h += `<div class="card" onclick='abrirFicha(${JSON.stringify(c)})'>
+                        <div style="display:flex; align-items:center">
+                            <span class="status-dot" style="background:${color}"></span>
+                            <div><b>${c.nombre}</b><br><small>${c.prod || 'General'}</small></div>
+                        </div>
+                        <b>$${c.saldo.toFixed(2)}</b>
+                      </div>`;
             });
             document.getElementById('u-total').innerText = `$ ${total.toFixed(2)}`;
             document.getElementById('lista-clientes').innerHTML = h;
@@ -203,6 +278,7 @@
     function abrirFicha(c) {
         cliActivo = c;
         document.getElementById('det-cli-nom').innerText = c.nombre;
+        document.getElementById('det-cli-fcobro').innerText = c.fechaCobro || "---";
         document.getElementById('det-cli-prod').innerText = c.prod || "---";
         document.getElementById('det-cli-dir').innerText = c.direccion || "---";
         document.getElementById('det-cli-frec').innerText = c.frecuencia || "---";
@@ -220,7 +296,11 @@
         }).then(() => { closeM(); document.getElementById('input-abono').value = ""; });
     }
 
-    function eliminarDeuda() { if(confirm("¿Saldar deuda?")) db.collection("clientes").doc(cliActivo.id).update({ saldo: 0 }).then(closeM); }
+    function eliminarClienteCompleto() { 
+        if(confirm(`¿Eliminar a ${cliActivo.nombre}?`)) {
+            db.collection("clientes").doc(cliActivo.id).delete().then(closeM);
+        }
+    }
 
     function crearCli() {
         db.collection("clientes").add({
@@ -228,16 +308,27 @@
             prefijo: document.getElementById('nc-pref').value, telefono: document.getElementById('nc-tel').value,
             saldo: parseFloat(document.getElementById('nc-tot').value) - parseFloat(document.getElementById('nc-ini').value),
             direccion: document.getElementById('nc-dir').value, frecuencia: document.getElementById('nc-frec').value,
+            fechaCobro: document.getElementById('nc-fecha').value,
             creadoPor: uSesion.nombre, historial: []
         }).then(closeM);
     }
 
     function enviarWA(t) {
-        const msgs = ["Aviso de cuota.","Hoy paso por el pago.","⚠️ Pago atrasado."];
-        window.open(`https://wa.me/${cliActivo.prefijo}${cliActivo.telefono}?text=${encodeURI(msgs[t-1])}`);
+        const nombre = cliActivo.nombre;
+        const bendicion = "Que Dios le bendiga y le conceda muchos éxitos en todas sus labores. ";
+        let mensajeCuerpo = "";
+
+        if (t === 1) {
+            mensajeCuerpo = `Hola ${nombre},reciba un cordial saludo${bendicion}Le escribimos para recordarle cordialmente que se acerca su próxima fecha de pago. ¡Gracias por su atención!`;
+        } else if (t === 2) {
+            mensajeCuerpo = `Hola ${nombre}, reciba un  ordial saludo. ${bendicion}Le recordamos que el día de hoy corresponde realizar su abono programado. Estaremos atentos para ayudarle con su gestión.`;
+        } else if (t === 3) {
+            mensajeCuerpo = `Estimado(a) ${nombre}, resiba un cordial. ${bendicion}Notamos que su cuenta presenta un retraso; le recordamos la importancia de mantenerse al día para seguir disfrutando de nuestros beneficios. Quedamos a la espera de su respuesta.`;
+        }
+
+        window.open(`https://wa.me/${cliActivo.prefijo}${cliActivo.telefono}?text=${encodeURIComponent(mensajeCuerpo)}`);
     }
 
-    // ADMIN USERS
     function cargarUsuariosAdmin() {
         db.collection("usuarios").onSnapshot(snap => {
             let h = ""; snap.forEach(doc => {
@@ -253,27 +344,4 @@
         document.getElementById('ed-u-nom').value = u.nombre;
         document.getElementById('ed-u-pin').value = u.pin;
         document.getElementById('ed-u-status').value = u.status;
-        document.getElementById('ed-u-vence').value = u.vence || '';
-        openM('m-edit-u');
-    }
-
-    function actualizarU() {
-        db.collection("usuarios").doc(uActivoAdmin.id).update({
-            nombre: document.getElementById('ed-u-nom').value, pin: document.getElementById('ed-u-pin').value,
-            status: document.getElementById('ed-u-status').value, vence: document.getElementById('ed-u-vence').value
-        }).then(closeM);
-    }
-
-    function crearU() {
-        db.collection("usuarios").add({
-            nombre: document.getElementById('nu-nom').value, pin: document.getElementById('nu-pin').value,
-            status: 'activo', vence: document.getElementById('nu-vence').value
-        }).then(closeM);
-    }
-
-    function eliminarU() { if(confirm("¿Eliminar?")) db.collection("usuarios").doc(uActivoAdmin.id).delete().then(closeM); }
-    function openM(id) { document.getElementById(id).style.display = 'flex'; }
-    function closeM() { document.querySelectorAll('.modal').forEach(m => m.style.display = 'none'); }
-</script>
-</body>
-</html>
+        d
