@@ -344,4 +344,28 @@
         document.getElementById('ed-u-nom').value = u.nombre;
         document.getElementById('ed-u-pin').value = u.pin;
         document.getElementById('ed-u-status').value = u.status;
-        d
+        document.getElementById('ed-u-vence').value = u.vence || '';
+        openM('m-edit-u');
+    }
+
+    function actualizarU() {
+        db.collection("usuarios").doc(uActivoAdmin.id).update({
+            nombre: document.getElementById('ed-u-nom').value, pin: document.getElementById('ed-u-pin').value,
+            status: document.getElementById('ed-u-status').value, vence: document.getElementById('ed-u-vence').value
+        }).then(closeM);
+    }
+
+    function crearU() {
+        db.collection("usuarios").add({
+            nombre: document.getElementById('nu-nom').value, pin: document.getElementById('nu-pin').value,
+            status: 'activo', vence: document.getElementById('nu-vence').value
+        }).then(closeM);
+    }
+
+    function eliminarU() { if(confirm("¿Eliminar?")) db.collection("usuarios").doc(uActivoAdmin.id).delete().then(closeM); }
+    function openM(id) { document.getElementById(id).style.display = 'flex'; }
+    function closeM() { document.querySelectorAll('.modal').forEach(m => m.style.display = 'none'); }
+</script>
+</body>
+</html>
+
